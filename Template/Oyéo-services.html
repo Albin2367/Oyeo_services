@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oyéo services - Votre quotidien, organisé avec soin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- VARIABLES & COULEURS --- */
+        :root {
+            --primary-blue: #112240;
+            --accent-gold: #c5a880;
+            --bg-light: #fcfbf7;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --card-bg: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        /* --- STYLES GENERAUX --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        .serif-font {
+            font-family: 'Cormorant+Garamond', serif;
+            font-weight: 500;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-tag {
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px auto;
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* --- BOUTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            text-align: center;
+        }
+
+        .btn-gold {
+            background-color: var(--accent-gold);
+            color: var(--text-light);
+        }
+
+        .btn-gold:hover {
+            background-color: #b3956d;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--text-light);
+            color: var(--text-light);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--text-light);
+            color: var(--primary-blue);
+        }
+
+        .btn-dark {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+        }
+
+        .btn-dark:hover {
+            background-color: #1d3557;
+            transform: translateY(-2px);
+        }
+
+        .btn-download i {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            margin-right: 5px;
+        }
+
+        .btn-download:hover i {
+            transform: translateY(3px);
+        }
+
+        /* --- 1. HERO SECTION & NAV --- */
+        header {
+            position: relative;
+            background: linear-gradient(rgba(17, 34, 64, 0.55), rgba(17, 34, 64, 0.45)),
+                url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            min-height: 90vh;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 50px;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .logo-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--accent-gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            font-size: 0.85rem;
+            list-style: none;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .hero-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            margin-bottom: 50px;
+        }
+
+        .hero-tag {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .hero-content h1 span {
+            font-style: italic;
+            color: var(--accent-gold);
+        }
+
+        .hero-subtitle {
+            max-width: 650px;
+            font-size: 1rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero-footer-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 20px;
+            font-size: 0.75rem;
+            background: rgba(17, 34, 64, 0.2);
+            width: 100%;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-footer-info span i {
+            color: var(--accent-gold);
+            margin-right: 5px;
+        }
+
+        /* --- 2. QUI SOMMES-NOUS --- */
+        .about-section {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+        }
+
+        .about-img {
+            border-radius: 4px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+
+        .about-badge {
+            position: absolute;
+            bottom: -20px;
+            right: 40px;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 25px;
+            border-radius: 4px;
+            max-width: 220px;
+            font-size: 0.8rem;
+        }
+
+        .about-badge p {
+            font-size: 1.2rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--accent-gold);
+            margin-bottom: 5px;
+        }
+
+        .about-content .section-tag {
+            text-align: left;
+        }
+
+        .about-content h2 {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+        }
+
+        .about-text {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .about-text strong {
+            color: var(--primary-blue);
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        /* --- 3. NOS SERVICES PRINCIPAUX --- */
+        .services-section {
+            padding: 100px 0;
+            background-color: #fbfaf5;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-img-container {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-img-container img {
+            scale: 1.05;
+        }
+
+        .coming-soon-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(17, 34, 64, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            font-size: 1.4rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .service-content p {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 20px;
+            height: 60px;
+            overflow: hidden;
+        }
+
+        .service-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 15px;
+            font-size: 0.8rem;
+        }
+
+        .price {
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+
+        .service-arrow {
+            color: var(--primary-blue);
+        }
+
+        .center-btn-wrapper {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* --- 4. COUNTER BAR --- */
+        .counter-section {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 60px 0;
+        }
+
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            text-align: center;
+            gap: 20px;
+        }
+
+        .counter-item h3 {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            font-weight: 400;
+            margin-bottom: 5px;
+        }
+
+        .counter-item p {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        /* --- 5. POURQUOI CHOISIR PRIVÉA --- */
+        .why-section {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .why-card {
+            background: var(--card-bg);
+            padding: 30px 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.01);
+            transition: var(--transition);
+        }
+
+        .why-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .why-icon {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .why-card h4 {
+            font-size: 0.95rem;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .why-card p {
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        /* --- 6. COMMENT ÇA MARCHE --- */
+        .steps-section {
+            padding: 100px 0;
+            background-color: #fbfaf5;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            position: relative;
+        }
+
+        .step-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-blue);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px auto;
+            font-size: 0.9rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-item h4 {
+            font-size: 1rem;
+            color: var(--primary-blue);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .step-item p {
+            font-size: 0.8rem;
+            color: #666;
+            padding: 0 10px;
+        }
+
+        /* --- 7. TEMOIGNAGES --- */
+        .testimonials-section {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        .testimonials-grid {
+            display: flex;
+            overflow-x: auto;
+            gap: 30px;
+            padding: 10px 0 30px 0;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .testimonials-grid::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .testimonials-grid::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .testimonials-grid::-webkit-scrollbar-thumb {
+            background: var(--accent-gold);
+            border-radius: 4px;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-top: 3px solid var(--accent-gold);
+            flex: 0 0 350px;
+            scroll-snap-align: center;
+        }
+
+        .stars {
+            color: var(--accent-gold);
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-text {
+            font-size: 0.9rem;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .client-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-blue);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .client-details h5 {
+            font-size: 0.85rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .client-details p {
+            font-size: 0.75rem;
+            color: #999;
+        }
+
+        /* --- 8. CTA SECTION --- */
+        .cta-section {
+            background-color: var(--primary-blue);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin-bottom: 35px;
+        }
+
+        /* --- 9. FOOTER --- */
+        footer {
+            background-color: var(--primary-blue);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 80px 0 30px 0;
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .logo {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-gold);
+            padding-left: 5px;
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .contact-info i {
+            color: var(--accent-gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-lang {
+            color: var(--accent-gold);
+            cursor: pointer;
+        }
+
+        /* --- ZONES D'INTERVENTION --- */
+        .zones-section {
+            background: linear-gradient(rgba(17, 34, 64, 0.85), rgba(17, 34, 64, 0.85)),
+                url('https://images.unsplash.com/photo-1549144511-f099e773c147?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            background-attachment: fixed;
+        }
+
+        .zones-section .section-tag {
+            color: var(--accent-gold);
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .zones-section h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .zones-subtitle {
+            max-width: 650px;
+            font-size: 1rem;
+            font-weight: 300;
+            margin: 0 auto 40px auto;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .zones-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .zone-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 22px 30px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: white;
+            font-weight: 400;
+            transition: var(--transition);
+            flex: 0 1 auto;
+            min-width: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .zone-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent-gold);
+            transform: translateY(-3px);
+        }
+
+        .btn-zones {
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn-zones:hover {
+            border-color: white;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 1024px) {
+
+            .services-grid,
+            .why-grid,
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            /* Possibilité d'ajouter un menu burger */
+            .services-grid,
+            .why-grid,
+            .steps-grid,
+            .counter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-footer-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .zones-section {
+                padding: 60px 20px;
+            }
+
+            .zones-section h2 {
+                font-size: 2.2rem;
+            }
+
+            .zone-card {
+                padding: 18px 20px;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">O</div>
+                <span>Oyéo services</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Tarifs</a></li>
+                <li><a href="#">A propos</a></li>
+                <li><a href="#">Engagements</a></li>
+                <li><a href="#">Devis</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="#" class="btn btn-outline" style="padding: 8px 20px;"><i class="fa-regular fa-comment"></i>
+                    Demander une prestation</a>
+            </div>
+        </nav>
+
+        <div class="hero-content">
+            <span class="hero-tag">Service privé & conciergerie</span>
+            <h1>Votre quotidien,<br><span>organisé avec soin</span></h1>
+            <p class="hero-subtitle">Des prestations sur-mesure de haute qualité : assistance administrative,
+                intendance, pressing, garde d'animaux, préparation de repas et entretien de la maison.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-gold">Demander votre solution <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="#" class="btn btn-outline">Nous contacter sur WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="hero-footer-info">
+            <span><i class="fa-solid fa-shield-halved"></i> Confidentialité</span>
+            <span><i class="fa-regular fa-star"></i> Excellence</span>
+            <span><i class="fa-regular fa-clock"></i> Ponctualité</span>
+        </div>
+        <div style="text-align: center; padding-bottom: 30px; color: rgba(255,255,255,0.7);">
+            <i class="fa-solid fa-computer-mouse" style="font-size: 1.5rem;"></i>
+        </div>
+    </header>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80"
+                        alt="Intérieur maison propre" class="about-img">
+                    <div class="about-badge">
+                        <p>10 ans</p>
+                        <span>d'excellence à votre service au quotidien.</span>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="section-tag">À propos</span>
+                    <h2>Qui sommes-nous ?</h2>
+                    <p class="about-text">Oyéo services est né d'une ambition simple : proposer un <strong>service
+                            d'excellence de proximité</strong>, fiable, discret et sur-mesure pour les particuliers qui
+                        souhaitent gagner du temps sans renoncer à la qualité.</p>
+                    <p class="about-text">Notre équipe se repose sur trois piliers : la qualité du service, la
+                        confidentialité et le sens du détail. Nous n'intervenons que pour que votre quotidien soit un
+                        havre de paix.</p>
+                    <a href="#" class="read-more">En savoir plus <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section">
+        <div class="container">
+            <span class="section-tag">Nos Prestations</span>
+            <h2 class="section-title">Nos Services Principaux</h2>
+            <p class="section-subtitle">Découvrez nos offres conçues pour vous offrir le luxe du temps retrouvé.</p>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img-container">
+                        <img src="images/maison-impeccable.png"
+                            alt="Maison Impeccable">
+                    </div>
+                    <div class="service-content">
+                        <h3>Maison Impeccable</h3>
+                        <p>Nettoyage complet et régulier de votre intérieur : dépoussiérage, nettoyage de sols, vitres
+                            et entretien sur-mesure.</p>
+                        <div class="service-footer">
+                            <span class="price">À partir de 25€/h</span>
+                            <span class="service-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img-container">
+                        <img src="images/matin-privilege.png"
+                            alt="Matin Privilège">
+                    </div>
+                    <div class="service-content">
+                        <h3>Matin Privilège</h3>
+                        <p>Préparation et livraison de petits-déjeuners frais chez vous pour un moment d'exception pour
+                            bien démarrer votre journée.</p>
+                        <div class="service-footer">
+                            <span class="price">À partir de 35€</span>
+                            <span class="service-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img-container">
+                        <img src="images/courses-quotidien.png"
+                            alt="Courses & Quotidien">
+                    </div>
+                    <div class="service-content">
+                        <h3>Courses & Quotidien</h3>
+                        <p>Nous faisons vos courses de la semaine selon votre liste et les rangeons directement chez
+                            vous pour vous faire gagner du temps.</p>
+                        <div class="service-footer">
+                            <span class="price">À partir de 30€/Livraison</span>
+                            <span class="service-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img-container">
+                        <img src="images/repassage-linge.png"
+                            alt="Repassage & Linge">
+                        <div class="coming-soon-overlay">COMING SOON</div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Repassage & Linge</h3>
+                        <p>Soin de votre linge délicat, repassage méticuleux et rangement soigné directement dans vos
+                            armoires.</p>
+                        <div class="service-footer">
+                            <span class="price">À partir de 19€/kg</span>
+                            <span class="service-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img-container">
+                        <img src="images/jardinage-exterieur.png"
+                            alt="Jardinage & Extérieur">
+                    </div>
+                    <div class="service-content">
+                        <h3>Jardinage & Extérieur</h3>
+                        <p>Entretien de vos espaces verts, tonte de pelouse, taille de haies et aménagement de
+                            terrasses.</p>
+                        <div class="service-footer">
+                            <span class="price">Sur devis</span>
+                            <span class="service-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img-container">
+                        <img src="images/retour-voyage.png"
+                            alt="Retour de Voyage">
+                    </div>
+                    <div class="service-content">
+                        <h3>Retour de Voyage</h3>
+                        <p>Retrouvez un frigo plein, des lits propres et une maison aérée et accueillante à votre retour
+                            de déplacement.</p>
+                        <div class="service-footer">
+                            <span class="price">Sur devis</span>
+                            <span class="service-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="center-btn-wrapper">
+                <a href="#" class="btn btn-dark">Découvrir l'ensemble des services</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="counter-section">
+        <div class="container">
+            <div class="counter-grid">
+                <div class="counter-item">
+                    <h3 id="count1">300+</h3>
+                    <p>Prestations Réalisées</p>
+                </div>
+                <div class="counter-item">
+                    <h3 id="count2">98%</h3>
+                    <p>Clients Satisfaits</p>
+                </div>
+                <div class="counter-item">
+                    <h3 id="count3">24h</h3>
+                    <p>Délai de Réponse</p>
+                </div>
+                <div class="counter-item">
+                    <h3 id="count4">5+</h3>
+                    <p>Années d'expérience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-section">
+        <div class="container">
+            <span class="section-tag">Notre Engagement</span>
+            <h2 class="section-title">Pourquoi choisir Oyéo services ?</h2>
+            <p class="section-subtitle">Nous mettons tout en œuvre pour vous offrir le meilleur service basé sur la
+                confiance.</p>
+
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h4>Sécurité & Discrétion</h4>
+                    <p>Une totale confidentialité de votre vie privée et de vos espaces de vie.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fa-solid fa-user-tie"></i></div>
+                    <h4>Personnel Expérimenté</h4>
+                    <p>Des professionnels recrutés avec soin et formés aux critères d'exigence élevés.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fa-solid fa-clock"></i></div>
+                    <h4>Gain de temps</h4>
+                    <p>Libérez-vous de l'esprit des contraintes logistiques du quotidien.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fa-solid fa-star"></i></div>
+                    <h4>Sur-mesure</h4>
+                    <p>Chaque formule s'adapte à vos réels besoins.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fa-solid fa-comments"></i></div>
+                    <h4>Communication claire</h4>
+                    <p>Un interlocuteur unique disponible par message et appel.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fa-solid fa-percent"></i></div>
+                    <h4>Tarification transparente</h4>
+                    <p>Aucun coût caché, des tarifs fixes communiqués en amont.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fa-solid fa-handshake"></i></div>
+                    <h4>Respect du domicile</h4>
+                    <p>Soin extrême apporté à vos meubles et objets précieux.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fa-solid fa-leaf"></i></div>
+                    <h4>Éco-responsable</h4>
+                    <p>Utilisation prioritaire de produits respectueux de votre environnement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="steps-section">
+        <div class="container">
+            <span class="section-tag">Processus</span>
+            <h2 class="section-title">Comment ça marche ?</h2>
+            <p class="section-subtitle">Une prise en charge rapide et simplifiée en 4 étapes clés.</p>
+
+            <div class="steps-grid">
+                <div class="step-item">
+                    <div class="step-number">01</div>
+                    <h4>Exprimez votre besoin</h4>
+                    <p>Par téléphone, WhatsApp ou notre formulaire en quelques secondes.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">02</div>
+                    <h4>Nous validons les détails</h4>
+                    <p>Adresse, créneau horaire, aménagement et détails spécifiques.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">03</div>
+                    <h4>Prise en charge & Réalisation</h4>
+                    <p>Avec discrétion, ponctualité et professionnalisme à l'heure convenue.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">04</div>
+                    <h4>Profitez du résultat</h4>
+                    <p>Maison propre, courses faites, l'esprit libre de toute charge mentale.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="container">
+            <span class="section-tag">Témoignages</span>
+            <h2 class="section-title">Ce que disent nos clients</h2>
+            <p class="section-subtitle">Découvrez les avis de ceux qui nous font confiance chaque semaine.</p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Un service exceptionnel ! Maison Impeccable est parfait. Le personnel
+                        est discret, ponctuel et d'une efficacité rare. Je recommande à 100%."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">ML</div>
+                        <div class="client-details">
+                            <h5>Marie L.</h5>
+                            <p>Paris (75)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Le 'Matin Privilège' a transformé mon dimanche matin. Quel bonheur de
+                        recevoir un petit déjeuner si complet et frais sans sortir de chez soi."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">AG</div>
+                        <div class="client-details">
+                            <h5>Alexandre G.</h5>
+                            <p>Neuilly-sur-Seine</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Je n'ai plus du tout le temps de faire les courses. Oyéo s'occupe de
+                        tout, mon frigo est plein à mon retour de déplacement. Merci beaucoup."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">SD</div>
+                        <div class="client-details">
+                            <h5>Sophie D.</h5>
+                            <p>Boulogne-Billancourt</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="zones-section">
+        <div class="container">
+            <span class="section-tag">Zones d'Intervention</span>
+            <h2>Paris Ouest & Île-de-France</h2>
+            <p class="zones-subtitle">Oyéo services intervient principalement à Paris Ouest et dans les communes premium
+                d'Île-de-France.</p>
+
+            <div class="zones-grid">
+                <div class="zone-card">Paris 16e</div>
+                <div class="zone-card">Neuilly-sur-Seine</div>
+                <div class="zone-card">Boulogne-Billancourt</div>
+                <div class="zone-card">Saint-Cloud</div>
+                <div class="zone-card">Le Vésinet</div>
+                <div class="zone-card">Saint-Germain-en-Laye</div>
+                <div class="zone-card">Versailles</div>
+                <div class="zone-card">Levallois-Perret</div>
+                <div class="zone-card">Paris Ouest</div>
+                <div class="zone-card">Hauts-de-Seine</div>
+                <div class="zone-card">Yvelines</div>
+            </div>
+
+            <div>
+                <a href="#" class="btn-zones">Voir toutes les zones</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Prêt à déléguer votre quotidien ?</h2>
+            <p>Demandez votre proposition personnalisée et rejoignez l'élite de ceux qui profitent de leur temps.</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="#" class="btn btn-gold">Demander un devis gratuit <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="#" class="btn btn-outline btn-download"><i class="fa-solid fa-file-arrow-down"></i> Télécharger
+                    la brochure</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon">O</div>
+                        <span>Oyéo services</span>
+                    </div>
+                    <p>Votre conciergerie privée moderne au service de votre bien-être et de votre maison au quotidien.
+                    </p>
+                    <div class="btn-outline"
+                        style="display:inline-block; padding: 5px 15px; border-radius: 4px; font-size: 0.75rem;">
+                        Demander un devis en ligne</div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Tarifs</a></li>
+                        <li><a href="#">A propos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Engagements</h4>
+                    <ul>
+                        <li><a href="#">Confidentialité</a></li>
+                        <li><a href="#">Qualité d'intervention</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Demander une solution</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="contact-info">
+                        <li><i class="fa-solid fa-phone"></i> +33 (0)1 00 00 00 00</li>
+                        <li><i class="fa-solid fa-envelope"></i> contact@priveaservices.fr</li>
+                        <li><i class="fa-solid fa-location-dot"></i> Paris, France</li>
+                        <li><i class="fa-solid fa-clock"></i> 7j/7 - 8h / 22h</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Oyéo services. Tous droits réservés.</p>
+                <div>
+                    <span class="footer-lang">FR <i class="fa-solid fa-chevron-down"
+                            style="font-size:0.6rem;"></i></span>
+                    <a href="#" style="margin-left: 20px; opacity:0.6;">Mentions Légales</a>
+                    <a href="#" style="margin-left: 20px; opacity:0.6;">Confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Effet d'apparition douce des éléments lors du défilement
+            const observerOptions = { root: null, threshold: 0.1 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform = "translateY(0)";
+                    }
+                });
+            }, observerOptions);
+
+            // Appliquer l'effet sur les cartes de service et témoignages
+            const cards = document.querySelectorAll('.service-card, .testimonial-card, .why-card');
+            cards.forEach(card => {
+                card.style.opacity = "0";
+                card.style.transform = "translateY(20px)";
+                card.style.transition = "all 0.6s ease-out";
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+
+</html>
