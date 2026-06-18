@@ -66,7 +66,6 @@
         }
 
         .section-tag {
-            display: block;
             text-transform: uppercase;
             font-size: 11px;
             letter-spacing: 2px;
@@ -154,7 +153,6 @@
             color: var(--text-light);
             display: flex;
             flex-direction: column;
-            padding-top: 100px;
         }
 
         nav {
@@ -163,17 +161,6 @@
             align-items: center;
             padding: 25px 50px;
             width: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            transition: background-color 0.3s ease, padding 0.3s ease;
-        }
-
-        nav.scrolled {
-            background-color: var(--primary-blue);
-            padding: 15px 50px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .logo {
@@ -229,14 +216,9 @@
         .hero-tag {
             text-transform: uppercase;
             font-size: 0.75rem;
-            font-weight: 500;
             letter-spacing: 3px;
             color: var(--accent-gold);
             margin-bottom: 15px;
-            display: inline-block;
-            border: 1px solid var(--accent-gold);
-            padding: 6px 15px;
-            border-radius: 50px;
         }
 
         .hero-content h1 {
@@ -300,7 +282,7 @@
         }
 
         .about-img {
-            border-radius: 10px;
+            border-radius: 4px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
             width: 100%;
             height: 450px;
@@ -314,7 +296,7 @@
             background-color: var(--primary-blue);
             color: white;
             padding: 25px;
-            border-radius: 8px;
+            border-radius: 4px;
             max-width: 220px;
             font-size: 0.8rem;
         }
@@ -327,12 +309,7 @@
         }
 
         .about-content .section-tag {
-            text-align: left; /* Ou laisser vide si left est l'héritage par défaut */
-        }
-
-        .about-content {
-            border-radius: 8px;
-            padding: 20px;
+            text-align: left;
         }
 
         .about-content h2 {
@@ -906,6 +883,7 @@
     <header>
         <nav>
             <div class="logo">
+                <div class="logo-icon">O</div>
                 <span>Oyéo services</span>
             </div>
             <ul class="nav-links">
@@ -918,7 +896,7 @@
                 <li><a href="#">Contact</a></li>
             </ul>
             <div class="nav-right">
-                <a href="#" class="btn btn-outline" style="padding: 8px 20px;">
+                <a href="#" class="btn btn-outline" style="padding: 8px 20px;"><i class="fa-regular fa-comment"></i>
                     Demander une prestation</a>
             </div>
         </nav>
@@ -929,7 +907,7 @@
             <p class="hero-subtitle">Des prestations sur-mesure de haute qualité : assistance administrative,
                 intendance, pressing, garde d'animaux, préparation de repas et entretien de la maison.</p>
             <div class="hero-buttons">
-                <a href="#" class="btn btn-gold">Demander votre prestation </a>
+                <a href="#" class="btn btn-gold">Demander votre prestation <i class="fa-solid fa-arrow-right"></i></a>
                 <a href="#" class="btn btn-outline">Nous contacter sur WhatsApp</a>
             </div>
         </div>
@@ -979,7 +957,8 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-img-container">
-                        <img src="images/maison-impeccable.png" alt="Maison Impeccable">
+                        <img src="images/maison-impeccable.png"
+                            alt="Maison Impeccable">
                     </div>
                     <div class="service-content">
                         <h3>Maison Impeccable</h3>
@@ -994,7 +973,8 @@
 
                 <div class="service-card">
                     <div class="service-img-container">
-                        <img src="images/matin-privilege.png" alt="Matin Privilège">
+                        <img src="images/matin-privilege.png"
+                            alt="Matin Privilège">
                     </div>
                     <div class="service-content">
                         <h3>Matin Privilège</h3>
@@ -1009,7 +989,8 @@
 
                 <div class="service-card">
                     <div class="service-img-container">
-                        <img src="images/courses-quotidien.png" alt="Courses & Quotidien">
+                        <img src="images/courses-quotidien.png"
+                            alt="Courses & Quotidien">
                     </div>
                     <div class="service-content">
                         <h3>Courses & Quotidien</h3>
@@ -1024,7 +1005,8 @@
 
                 <div class="service-card">
                     <div class="service-img-container">
-                        <img src="images/repassage-linge.png" alt="Repassage & Linge">
+                        <img src="images/repassage-linge.png"
+                            alt="Repassage & Linge">
                         <div class="coming-soon-overlay">COMING SOON</div>
                     </div>
                     <div class="service-content">
@@ -1040,7 +1022,8 @@
 
                 <div class="service-card">
                     <div class="service-img-container">
-                        <img src="images/jardinage-exterieur.png" alt="Jardinage & Extérieur">
+                        <img src="images/jardinage-exterieur.png"
+                            alt="Jardinage & Extérieur">
                     </div>
                     <div class="service-content">
                         <h3>Jardinage & Extérieur</h3>
@@ -1055,7 +1038,8 @@
 
                 <div class="service-card">
                     <div class="service-img-container">
-                        <img src="images/retour-voyage.png" alt="Retour de Voyage">
+                        <img src="images/retour-voyage.png"
+                            alt="Retour de Voyage">
                     </div>
                     <div class="service-content">
                         <h3>Retour de Voyage</h3>
@@ -1274,7 +1258,7 @@
             <h2>Prêt à déléguer votre quotidien ?</h2>
             <p>Demandez votre proposition personnalisée et rejoignez l'élite de ceux qui profitent de leur temps.</p>
             <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="#" class="btn btn-gold">Demander une prestation </a>
+                <a href="#" class="btn btn-gold">Demander une prestation <i class="fa-solid fa-arrow-right"></i></a>
                 <a href="#" class="btn btn-outline btn-download"><i class="fa-solid fa-file-arrow-down"></i> Télécharger
                     la brochure</a>
             </div>
@@ -1286,6 +1270,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="logo">
+                        <div class="logo-icon">O</div>
                         <span>Oyéo services</span>
                     </div>
                     <p>Votre conciergerie privée moderne au service de votre bien-être et de votre maison au quotidien.
@@ -1358,16 +1343,6 @@
                 card.style.transform = "translateY(20px)";
                 card.style.transition = "all 0.6s ease-out";
                 observer.observe(card);
-            });
-
-            // Effet navbar fixe (sticky) au scroll
-            const nav = document.querySelector('nav');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    nav.classList.add('scrolled');
-                } else {
-                    nav.classList.remove('scrolled');
-                }
             });
         });
     </script>
