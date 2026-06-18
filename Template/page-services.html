@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oyéo services - Votre quotidien, organisé avec soin</title>
+    <title>Nos Services - Oyéo services</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -21,6 +21,7 @@
             --text-dark: #333333;
             --text-light: #ffffff;
             --card-bg: #ffffff;
+            --bullet-color: #d8c3a5;
             --transition: all 0.3s ease;
         }
 
@@ -66,6 +67,7 @@
         }
 
         .section-tag {
+            display: block;
             text-transform: uppercase;
             font-size: 11px;
             letter-spacing: 2px;
@@ -153,6 +155,7 @@
             color: var(--text-light);
             display: flex;
             flex-direction: column;
+            padding-top: 100px;
         }
 
         nav {
@@ -161,6 +164,17 @@
             align-items: center;
             padding: 25px 50px;
             width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease, padding 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: var(--primary-blue);
+            padding: 15px 50px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .logo {
@@ -216,9 +230,14 @@
         .hero-tag {
             text-transform: uppercase;
             font-size: 0.75rem;
+            font-weight: 500;
             letter-spacing: 3px;
             color: var(--accent-gold);
             margin-bottom: 15px;
+            display: inline-block;
+            border: 1px solid var(--accent-gold);
+            padding: 6px 15px;
+            border-radius: 50px;
         }
 
         .hero-content h1 {
@@ -282,7 +301,7 @@
         }
 
         .about-img {
-            border-radius: 4px;
+            border-radius: 10px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
             width: 100%;
             height: 450px;
@@ -296,7 +315,7 @@
             background-color: var(--primary-blue);
             color: white;
             padding: 25px;
-            border-radius: 4px;
+            border-radius: 8px;
             max-width: 220px;
             font-size: 0.8rem;
         }
@@ -310,6 +329,12 @@
 
         .about-content .section-tag {
             text-align: left;
+            /* Ou laisser vide si left est l'héritage par défaut */
+        }
+
+        .about-content {
+            border-radius: 8px;
+            padding: 20px;
         }
 
         .about-content h2 {
@@ -471,7 +496,8 @@
 
         /* --- 5. POURQUOI CHOISIR PRIVÉA --- */
         .why-section {
-            padding: 100px 0;
+            padding: 100px 0 60px 0;
+            /* Reduced bottom padding */
             background-color: var(--bg-light);
         }
 
@@ -513,7 +539,7 @@
 
         /* --- 6. COMMENT ÇA MARCHE --- */
         .steps-section {
-            padding: 100px 0;
+            padding: 40px 0 60px 0;
             background-color: #fbfaf5;
         }
 
@@ -527,6 +553,27 @@
         .step-item {
             text-align: center;
             position: relative;
+        }
+
+        /* Lignes de connexion entre les étapes */
+        .step-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 24px;
+            /* Centré par rapport à la puce de 50px */
+            left: calc(50% + 35px);
+            /* Commence un peu après le rond */
+            width: calc(100% - 40px);
+            /* Relie jusqu'avant le prochain rond */
+            border-top: 1.5px dashed var(--accent-gold);
+            opacity: 0.5;
+            z-index: 1;
+        }
+
+        @media (max-width: 900px) {
+            .step-item:not(:last-child)::after {
+                display: none;
+            }
         }
 
         .step-number {
@@ -560,7 +607,7 @@
 
         /* --- 7. TEMOIGNAGES --- */
         .testimonials-section {
-            padding: 100px 0;
+            padding: 60px 0 100px 0;
             background-color: var(--bg-light);
         }
 
@@ -767,15 +814,25 @@
             line-height: 1.6;
         }
 
+        .zones-section .container {
+            max-width: 95%; /* S'étend sur toute la largeur de la page avec une petite marge */
+        }
+
         .zones-grid {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             gap: 20px;
-            flex-wrap: wrap;
             margin-bottom: 40px;
-            max-width: 1000px;
+            max-width: 100%; /* Plus de limite de largeur */
             margin-left: auto;
             margin-right: auto;
+        }
+
+        .zones-row {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap; /* Garde le wrap pour les petits écrans */
         }
 
         .zone-card {
@@ -783,14 +840,18 @@
             border: 1px solid rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            padding: 22px 30px;
-            border-radius: 12px;
-            font-size: 0.9rem;
+            padding: 8px 5px; /* Marges réduites au maximum */
+            border-radius: 8px;
+            font-size: 0.75rem; /* Police plus petite */
+            line-height: 1.2;
             color: white;
             font-weight: 400;
             transition: var(--transition);
-            flex: 0 1 auto;
-            min-width: 180px;
+            flex: 1 1 0; /* Partage égal de l'espace disponible */
+            min-width: 0; /* Permet de rétrécir autant que nécessaire */
+            min-height: 60px; /* Assure une hauteur identique pour toutes les formes */
+            word-wrap: break-word; /* Coupe les mots trop longs si nécessaire */
+            text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -800,6 +861,12 @@
             background: rgba(255, 255, 255, 0.15);
             border-color: var(--accent-gold);
             transform: translateY(-3px);
+        }
+
+        .zone-more {
+            cursor: pointer;
+            border-style: dashed;
+            color: var(--accent-gold);
         }
 
         .btn-zones {
@@ -875,7 +942,342 @@
                 max-width: 100%;
             }
         }
+        /* --- CHAT WIDGET --- */
+        .chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .chat-btn {
+            background-color: var(--accent-gold);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .chat-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 320px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .chat-window.active {
+            display: flex;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chat-header {
+            background: var(--primary-blue);
+            color: white;
+            padding: 15px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-chat {
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .close-chat:hover {
+            color: white;
+        }
+
+        .chat-body {
+            height: 250px;
+            padding: 15px;
+            overflow-y: auto;
+            background: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chat-msg {
+            max-width: 85%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .msg-bot {
+            background: white;
+            color: #333;
+            align-self: flex-start;
+            border-bottom-left-radius: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .msg-user {
+            background: var(--primary-blue);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .chat-input {
+            display: flex;
+            border-top: 1px solid #eee;
+            background: white;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            outline: none;
+            font-size: 0.85rem;
+        }
+
+        .chat-input button {
+            background: none;
+            border: none;
+            padding: 0 15px;
+            color: var(--primary-blue);
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        .chat-confirm-modal {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            z-index: 10;
+        }
+        .chat-confirm-modal.active {
+            display: flex;
+        }
+        .chat-confirm-modal p {
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 500;
+        }
+        .chat-confirm-btns {
+            display: flex;
+            gap: 15px;
+        }
+        .btn-chat-confirm {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        .btn-chat-confirm:hover {
+            opacity: 0.8;
+        }
+        .btn-oui {
+            background-color: var(--accent-gold);
+            color: white;
+        }
+        .btn-non {
+            background-color: #eee;
+            color: #333;
+        }
+
+        /* --- BOUTONS --- */
+        .btn-blue {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .btn-blue:hover {
+            background-color: #1d3557;
+            transform: translateY(-2px);
+        }
+
+        /* --- HERO BANNER (NOS SERVICES) --- */
+        .services-hero {
+            background: linear-gradient(rgba(17, 34, 64, 0.65), rgba(17, 34, 64, 0.55)), 
+                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            padding: 100px 20px;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .services-hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .services-hero p {
+            max-width: 650px;
+            margin: 0 auto;
+            font-size: 0.95rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* --- BLOCS DE PRESTATIONS --- */
+        .prestations-wrapper {
+            background-color: #f7f4ef;
+            padding: 20px 0;
+        }
+
+        .prestation-section {
+            padding: 30px 0;
+        }
+
+        .prestation-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .prestation-row.reverse {
+            direction: rtl;
+        }
+
+        .prestation-row.reverse .prestation-info,
+        .prestation-row.reverse .prestation-details-box {
+            direction: ltr; 
+        }
+
+        .icon-circle {
+            width: 45px;
+            height: 45px;
+            background-color: #f3efe6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .prestation-info h3 {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .prestation-description {
+            font-size: 0.95rem;
+            color: #666;
+            font-style: italic;
+            max-width: 450px;
+        }
+
+        .prestation-details-box {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px 35px;
+            list-style: none;
+        }
+
+        .features-list li {
+            font-size: 0.85rem;
+            color: #555;
+            position: relative;
+            padding-left: 18px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+
+        .features-list li::before {
+            content: "•";
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        @media (max-width: 900px) {
+            .prestation-row, .prestation-row.reverse {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                direction: ltr;
+            }
+            .prestation-row.reverse .prestation-info,
+            .prestation-row.reverse .prestation-details-box {
+                direction: ltr;
+            }
+            .services-hero h2 {
+                font-size: 2.8rem;
+            }
+            .prestation-info h3 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .features-list {
+                grid-template-columns: 1fr;
+            }
+            .prestation-details-box {
+                padding: 25px;
+            }
+        }
     </style>
+
 </head>
 
 <body>
@@ -883,12 +1285,11 @@
     <header>
         <nav>
             <div class="logo">
-                <div class="logo-icon">O</div>
                 <span>Oyéo services</span>
             </div>
             <ul class="nav-links">
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">Services</a></li>
+                <li><a href="Oyéo-services.html">Accueil</a></li>
+                <li><a href="page-services.html">Services</a></li>
                 <li><a href="#">Tarifs</a></li>
                 <li><a href="#">A propos</a></li>
                 <li><a href="#">Engagements</a></li>
@@ -896,381 +1297,141 @@
                 <li><a href="#">Contact</a></li>
             </ul>
             <div class="nav-right">
-                <a href="#" class="btn btn-outline" style="padding: 8px 20px;"><i class="fa-regular fa-comment"></i>
+                <a href="#" class="btn btn-outline" style="padding: 8px 20px;">
                     Demander une prestation</a>
             </div>
         </nav>
 
-        <div class="hero-content">
-            <span class="hero-tag">Service privé & conciergerie</span>
-            <h1>Votre quotidien,<br><span>organisé avec soin</span></h1>
-            <p class="hero-subtitle">Des prestations sur-mesure de haute qualité : assistance administrative,
-                intendance, pressing, garde d'animaux, préparation de repas et entretien de la maison.</p>
-            <div class="hero-buttons">
-                <a href="#" class="btn btn-gold">Demander votre prestation <i class="fa-solid fa-arrow-right"></i></a>
-                <a href="#" class="btn btn-outline">Nous contacter sur WhatsApp</a>
-            </div>
-        </div>
-
-        <div class="hero-footer-info">
-            <span><i class="fa-solid fa-shield-halved"></i> Confidentialité</span>
-            <span><i class="fa-regular fa-star"></i> Excellence</span>
-            <span><i class="fa-regular fa-clock"></i> Ponctualité</span>
-        </div>
-        <div style="text-align: center; padding-bottom: 30px; color: rgba(255,255,255,0.7);">
-            <i class="fa-solid fa-computer-mouse" style="font-size: 1.5rem;"></i>
-        </div>
-    </header>
-
-    <section class="about-section">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80"
-                        alt="Intérieur maison propre" class="about-img">
-                    <div class="about-badge">
-                        <p>10 ans</p>
-                        <span>d'excellence à votre service au quotidien.</span>
-                    </div>
-                </div>
-                <div class="about-content">
-                    <span class="section-tag">À propos</span>
-                    <h2>Qui sommes-nous ?</h2>
-                    <p class="about-text">Oyéo services est né d'une ambition simple : proposer un <strong>service
-                            d'excellence de proximité</strong>, fiable, discret et sur-mesure pour les particuliers qui
-                        souhaitent gagner du temps sans renoncer à la qualité.</p>
-                    <p class="about-text">Notre équipe se repose sur trois piliers : la qualité du service, la
-                        confidentialité et le sens du détail. Nous n'intervenons que pour que votre quotidien soit un
-                        havre de paix.</p>
-                    <a href="#" class="read-more">En savoir plus <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
+            <section class="services-hero">
+        <span class="hero-tag">Nos Prestations</span>
+        <h2>Nos Services</h2>
+        <p>Découvrez notre gamme complète de services privés du quotidien, conçus pour vous faire gagner du temps et vous garantir sérénité et qualité.</p>
     </section>
 
-    <section class="services-section">
-        <div class="container">
-            <span class="section-tag">Nos Prestations</span>
-            <h2 class="section-title">Nos Services Principaux</h2>
-            <p class="section-subtitle">Découvrez nos offres conçues pour vous offrir le luxe du temps retrouvé.</p>
+    <div class="prestations-wrapper">
+    <div class="container">
 
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-img-container">
-                        <img src="images/maison-impeccable.png"
-                            alt="Maison Impeccable">
-                    </div>
-                    <div class="service-content">
-                        <h3>Maison Impeccable</h3>
-                        <p>Nettoyage complet et régulier de votre intérieur : dépoussiérage, nettoyage de sols, vitres
-                            et entretien sur-mesure.</p>
-                        <div class="service-footer">
-                            <span class="price">À partir de 25€/h</span>
-                            <span class="service-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                        </div>
-                    </div>
+        <div class="prestation-section">
+            <div class="prestation-row">
+                <div class="prestation-info">
+                    <div class="icon-circle"><i class="fa-solid fa-house"></i></div>
+                    <h3>Maison Impeccable</h3>
+                    <p class="prestation-description">Nous prenons soin de votre intérieur avec discrétion, méthode et exigence.</p>
+                    <a href="#" class="btn-blue">Demander cette prestation</a>
                 </div>
-
-                <div class="service-card">
-                    <div class="service-img-container">
-                        <img src="images/matin-privilege.png"
-                            alt="Matin Privilège">
-                    </div>
-                    <div class="service-content">
-                        <h3>Matin Privilège</h3>
-                        <p>Préparation et livraison de petits-déjeuners frais chez vous pour un moment d'exception pour
-                            bien démarrer votre journée.</p>
-                        <div class="service-footer">
-                            <span class="price">À partir de 35€</span>
-                            <span class="service-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-img-container">
-                        <img src="images/courses-quotidien.png"
-                            alt="Courses & Quotidien">
-                    </div>
-                    <div class="service-content">
-                        <h3>Courses & Quotidien</h3>
-                        <p>Nous faisons vos courses de la semaine selon votre liste et les rangeons directement chez
-                            vous pour vous faire gagner du temps.</p>
-                        <div class="service-footer">
-                            <span class="price">À partir de 30€/Livraison</span>
-                            <span class="service-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-img-container">
-                        <img src="images/repassage-linge.png"
-                            alt="Repassage & Linge">
-                        <div class="coming-soon-overlay">COMING SOON</div>
-                    </div>
-                    <div class="service-content">
-                        <h3>Repassage & Linge</h3>
-                        <p>Soin de votre linge délicat, repassage méticuleux et rangement soigné directement dans vos
-                            armoires.</p>
-                        <div class="service-footer">
-                            <span class="price">À partir de 19€/kg</span>
-                            <span class="service-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-img-container">
-                        <img src="images/jardinage-exterieur.png"
-                            alt="Jardinage & Extérieur">
-                    </div>
-                    <div class="service-content">
-                        <h3>Jardinage & Extérieur</h3>
-                        <p>Entretien de vos espaces verts, tonte de pelouse, taille de haies et aménagement de
-                            terrasses.</p>
-                        <div class="service-footer">
-                            <span class="price">Sur devis</span>
-                            <span class="service-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-img-container">
-                        <img src="images/retour-voyage.png"
-                            alt="Retour de Voyage">
-                    </div>
-                    <div class="service-content">
-                        <h3>Retour de Voyage</h3>
-                        <p>Retrouvez un frigo plein, des lits propres et une maison aérée et accueillante à votre retour
-                            de déplacement.</p>
-                        <div class="service-footer">
-                            <span class="price">Sur devis</span>
-                            <span class="service-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="center-btn-wrapper">
-                <a href="#" class="btn btn-dark">Découvrir l'ensemble des services</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="counter-section">
-        <div class="container">
-            <div class="counter-grid">
-                <div class="counter-item">
-                    <h3 id="count1">300+</h3>
-                    <p>Prestations Réalisées</p>
-                </div>
-                <div class="counter-item">
-                    <h3 id="count2">98%</h3>
-                    <p>Clients Satisfaits</p>
-                </div>
-                <div class="counter-item">
-                    <h3 id="count3">24h</h3>
-                    <p>Délai de Réponse</p>
-                </div>
-                <div class="counter-item">
-                    <h3 id="count4">5+</h3>
-                    <p>Années d'expérience</p>
+                <div class="prestation-details-box">
+                    <ul class="features-list">
+                        <li>Nettoyage premium</li>
+                        <li>Repassage</li>
+                        <li>Changement des draps</li>
+                        <li>Remise en ordre après événement</li>
+                        <li>Rangement</li>
+                        <li>Pliage du linge</li>
+                        <li>Préparation avant réception</li>
+                        <li>Entretien avant retour de voyage</li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section class="why-section">
-        <div class="container">
-            <span class="section-tag">Notre Engagement</span>
-            <h2 class="section-title">Pourquoi choisir Oyéo services ?</h2>
-            <p class="section-subtitle">Nous mettons tout en œuvre pour vous offrir le meilleur service basé sur la
-                confiance.</p>
-
-            <div class="why-grid">
-                <div class="why-card">
-                    <div class="why-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h4>Sécurité & Discrétion</h4>
-                    <p>Une totale confidentialité de votre vie privée et de vos espaces de vie.</p>
+        <div class="prestation-section">
+            <div class="prestation-row reverse">
+                <div class="prestation-info">
+                    <div class="icon-circle"><i class="fa-solid fa-mug-hot"></i></div>
+                    <h3>Matin Privilège</h3>
+                    <p class="prestation-description">Offrez un réveil élégant, préparé et livré avec soin.</p>
+                    <a href="#" class="btn-blue">Demander cette prestation</a>
                 </div>
-                <div class="why-card">
-                    <div class="why-icon"><i class="fa-solid fa-user-tie"></i></div>
-                    <h4>Personnel Expérimenté</h4>
-                    <p>Des professionnels recrutés avec soin et formés aux critères d'exigence élevés.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon"><i class="fa-solid fa-clock"></i></div>
-                    <h4>Gain de temps</h4>
-                    <p>Libérez-vous de l'esprit des contraintes logistiques du quotidien.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon"><i class="fa-solid fa-star"></i></div>
-                    <h4>Sur-mesure</h4>
-                    <p>Chaque formule s'adapte à vos réels besoins.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon"><i class="fa-solid fa-comments"></i></div>
-                    <h4>Communication claire</h4>
-                    <p>Un interlocuteur unique disponible par message et appel.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon"><i class="fa-solid fa-percent"></i></div>
-                    <h4>Tarification transparente</h4>
-                    <p>Aucun coût caché, des tarifs fixes communiqués en amont.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon"><i class="fa-solid fa-handshake"></i></div>
-                    <h4>Respect du domicile</h4>
-                    <p>Soin extrême apporté à vos meubles et objets précieux.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon"><i class="fa-solid fa-leaf"></i></div>
-                    <h4>Éco-responsable</h4>
-                    <p>Utilisation prioritaire de produits respectueux de votre environnement.</p>
+                <div class="prestation-details-box">
+                    <ul class="features-list">
+                        <li>Livraison de petit-déjeuner</li>
+                        <li>Fleurs</li>
+                        <li>Surprise romantique</li>
+                        <li>Brunch familial</li>
+                        <li>Viennoiseries</li>
+                        <li>Carte personnalisée</li>
+                        <li>Anniversaire</li>
+                        <li>Attention spéciale au réveil</li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section class="steps-section">
-        <div class="container">
-            <span class="section-tag">Processus</span>
-            <h2 class="section-title">Comment ça marche ?</h2>
-            <p class="section-subtitle">Une prise en charge rapide et simplifiée en 4 étapes clés.</p>
-
-            <div class="steps-grid">
-                <div class="step-item">
-                    <div class="step-number">01</div>
-                    <h4>Exprimez votre besoin</h4>
-                    <p>Par téléphone, WhatsApp ou notre formulaire en quelques secondes.</p>
+        <div class="prestation-section">
+            <div class="prestation-row">
+                <div class="prestation-info">
+                    <div class="icon-circle"><i class="fa-solid fa-basket-shopping"></i></div>
+                    <h3>Courses & Quotidien</h3>
+                    <p class="prestation-description">Nous gérons vos petites urgences et vos courses du quotidien.</p>
+                    <a href="#" class="btn-blue">Demander cette prestation</a>
                 </div>
-                <div class="step-item">
-                    <div class="step-number">02</div>
-                    <h4>Nous validons les détails</h4>
-                    <p>Adresse, créneau horaire, aménagement et détails spécifiques.</p>
-                </div>
-                <div class="step-item">
-                    <div class="step-number">03</div>
-                    <h4>Prise en charge & Réalisation</h4>
-                    <p>Avec discrétion, ponctualité et professionnalisme à l'heure convenue.</p>
-                </div>
-                <div class="step-item">
-                    <div class="step-number">04</div>
-                    <h4>Profitez du résultat</h4>
-                    <p>Maison propre, courses faites, l'esprit libre de toute charge mentale.</p>
+                <div class="prestation-details-box">
+                    <ul class="features-list">
+                        <li>Courses alimentaires</li>
+                        <li>Pressing</li>
+                        <li>Achat de fleurs</li>
+                        <li>Rangement des courses</li>
+                        <li>Pharmacie</li>
+                        <li>Dépôt et retrait de colis</li>
+                        <li>Achat de gâteau</li>
+                        <li>Préparation de la maison avant retour</li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section class="testimonials-section">
-        <div class="container">
-            <span class="section-tag">Témoignages</span>
-            <h2 class="section-title">Ce que disent nos clients</h2>
-            <p class="section-subtitle">Découvrez les avis de ceux qui nous font confiance chaque semaine.</p>
-
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Un service exceptionnel ! Maison Impeccable est parfait. Le personnel
-                        est discret, ponctuel et d'une efficacité rare. Je recommande à 100%."</p>
-                    <div class="client-info">
-                        <div class="client-avatar">ML</div>
-                        <div class="client-details">
-                            <h5>Marie L.</h5>
-                            <p>Paris (75)</p>
-                        </div>
-                    </div>
+        <div class="prestation-section">
+            <div class="prestation-row reverse">
+                <div class="prestation-info">
+                    <div class="icon-circle"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <h3>Maison Prête</h3>
+                    <p class="prestation-description">Préparation avant réception ou retour de voyage.</p>
+                    <a href="#" class="btn-blue">Demander cette prestation</a>
                 </div>
-
-                <div class="testimonial-card">
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Le 'Matin Privilège' a transformé mon dimanche matin. Quel bonheur de
-                        recevoir un petit déjeuner si complet et frais sans sortir de chez soi."</p>
-                    <div class="client-info">
-                        <div class="client-avatar">AG</div>
-                        <div class="client-details">
-                            <h5>Alexandre G.</h5>
-                            <p>Neuilly-sur-Seine</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Je n'ai plus du tout le temps de faire les courses. Oyéo s'occupe de
-                        tout, mon frigo est plein à mon retour de déplacement. Merci beaucoup."</p>
-                    <div class="client-info">
-                        <div class="client-avatar">SD</div>
-                        <div class="client-details">
-                            <h5>Sophie D.</h5>
-                            <p>Boulogne-Billancourt</p>
-                        </div>
-                    </div>
+                <div class="prestation-details-box">
+                    <ul class="features-list">
+                        <li>Logement aéré</li>
+                        <li>Frigo rempli</li>
+                        <li>Fleurs disposées</li>
+                        <li>Ambiance accueillante</li>
+                        <li>Courses faites</li>
+                        <li>Linge prêt</li>
+                        <li>Maison rangée</li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section class="zones-section">
-        <div class="container">
-            <span class="section-tag">Zones d'Intervention</span>
-            <h2>Paris Ouest & Île-de-France</h2>
-            <p class="zones-subtitle">Oyéo services intervient principalement à Paris Ouest et dans les communes premium
-                d'Île-de-France.</p>
-
-            <div class="zones-grid">
-                <div class="zone-card">Paris 16e</div>
-                <div class="zone-card">Neuilly-sur-Seine</div>
-                <div class="zone-card">Boulogne-Billancourt</div>
-                <div class="zone-card">Saint-Cloud</div>
-                <div class="zone-card">Le Vésinet</div>
-                <div class="zone-card">Saint-Germain-en-Laye</div>
-                <div class="zone-card">Versailles</div>
-                <div class="zone-card">Levallois-Perret</div>
-                <div class="zone-card">Paris Ouest</div>
-                <div class="zone-card">Hauts-de-Seine</div>
-                <div class="zone-card">Yvelines</div>
-            </div>
-
-            <div>
-                <a href="#" class="btn-zones">Voir toutes les zones</a>
+        <div class="prestation-section" style="padding-bottom: 120px;">
+            <div class="prestation-row">
+                <div class="prestation-info">
+                    <div class="icon-circle"><i class="fa-solid fa-wine-glass"></i></div>
+                    <h3>Après Réception</h3>
+                    <p class="prestation-description">Remise en ordre après dîner, fête ou événement privé.</p>
+                    <a href="#" class="btn-blue">Demander cette prestation</a>
+                </div>
+                <div class="prestation-details-box">
+                    <ul class="features-list">
+                        <li>Vaisselle</li>
+                        <li>Nettoyage cuisine</li>
+                        <li>Sanitaires</li>
+                        <li>Poubelles</li>
+                        <li>Sols</li>
+                        <li>Rangement général</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </section>
 
-    <section class="cta-section">
-        <div class="container">
-            <h2>Prêt à déléguer votre quotidien ?</h2>
-            <p>Demandez votre proposition personnalisée et rejoignez l'élite de ceux qui profitent de leur temps.</p>
-            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="#" class="btn btn-gold">Demander une prestation <i class="fa-solid fa-arrow-right"></i></a>
-                <a href="#" class="btn btn-outline btn-download"><i class="fa-solid fa-file-arrow-down"></i> Télécharger
-                    la brochure</a>
-            </div>
-        </div>
-    </section>
+    </div>
+    </div>
+
 
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="logo">
-                        <div class="logo-icon">O</div>
                         <span>Oyéo services</span>
                     </div>
                     <p>Votre conciergerie privée moderne au service de votre bien-être et de votre maison au quotidien.
@@ -1283,8 +1444,8 @@
                 <div class="footer-col">
                     <h4>Navigation</h4>
                     <ul>
-                        <li><a href="#">Accueil</a></li>
-                        <li><a href="#">Services</a></li>
+                        <li><a href="Oyéo-services.html">Accueil</a></li>
+                        <li><a href="page-services.html">Services</a></li>
                         <li><a href="#">Tarifs</a></li>
                         <li><a href="#">A propos</a></li>
                     </ul>
@@ -1323,8 +1484,58 @@
         </div>
     </footer>
 
+    <!-- CHAT WIDGET HTML -->
+    <div class="chat-widget">
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-confirm-modal" id="chatConfirmModal">
+                <p>Voulez-vous vider l'historique de la discussion avant de fermer ?</p>
+                <div class="chat-confirm-btns">
+                    <button class="btn-chat-confirm btn-oui" id="btnChatOui">Oui</button>
+                    <button class="btn-chat-confirm btn-non" id="btnChatNon">Non</button>
+                </div>
+            </div>
+            <div class="chat-header">
+                <span><i class="fa-solid fa-headset"></i> Assistant Oyéo</span>
+                <div>
+                    <span class="close-chat" id="viewChatHistory" style="margin-right: 15px;" title="Voir l'historique des interactions"><i class="fa-solid fa-clock-rotate-left"></i></span>
+                    <span class="close-chat" id="closeChat"><i class="fa-solid fa-xmark"></i></span>
+                </div>
+            </div>
+            <div class="chat-body" id="chatBody">
+                <div class="chat-msg msg-bot">
+                    Bonjour, Bienvenu sur notre fil de discussions Oyéo services, veuillez decrire votre besoin afin que nous puissions vous assister.
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInputText" placeholder="Écrivez votre message...">
+                <button id="sendChatBtn"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <div class="chat-btn" id="chatBtn">
+            <i class="fa-solid fa-comment-dots"></i>
+        </div>
+    </div>
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // Effet d'apparition au défilement pour les prestations
+            const observerRows = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform = "translateY(0)";
+                    }
+                });
+            }, { root: null, threshold: 0.15 });
+
+            const rows = document.querySelectorAll('.prestation-row');
+            rows.forEach(row => {
+                row.style.opacity = "0";
+                row.style.transform = "translateY(30px)";
+                row.style.transition = "all 0.6s ease-out";
+                observerRows.observe(row);
+            });
+
             // Effet d'apparition douce des éléments lors du défilement
             const observerOptions = { root: null, threshold: 0.1 };
             const observer = new IntersectionObserver((entries) => {
@@ -1343,6 +1554,115 @@
                 card.style.transform = "translateY(20px)";
                 card.style.transition = "all 0.6s ease-out";
                 observer.observe(card);
+            });
+
+            // Effet navbar fixe (sticky) au scroll
+            const nav = document.querySelector('nav');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            });
+
+            // Chat Widget Logic
+            const chatBtn = document.getElementById('chatBtn');
+            const chatWindow = document.getElementById('chatWindow');
+            const closeChat = document.getElementById('closeChat');
+            const sendChatBtn = document.getElementById('sendChatBtn');
+            const chatInputText = document.getElementById('chatInputText');
+            const chatBody = document.getElementById('chatBody');
+
+            let chatHistory = JSON.parse(localStorage.getItem('oyeo_chat_history_v2') || '[]');
+            let historyLoadedInUI = false;
+
+            chatBtn.addEventListener('click', () => {
+                chatWindow.classList.toggle('active');
+            });
+
+            const chatConfirmModal = document.getElementById('chatConfirmModal');
+            const btnChatOui = document.getElementById('btnChatOui');
+            const btnChatNon = document.getElementById('btnChatNon');
+
+            closeChat.addEventListener('click', () => {
+                chatConfirmModal.classList.add('active');
+            });
+
+            btnChatOui.addEventListener('click', () => {
+                // On vide l'historique
+                chatHistory = [];
+                localStorage.removeItem('oyeo_chat_history_v2');
+                const welcomeMsg = chatBody.firstElementChild;
+                chatBody.innerHTML = '';
+                if (welcomeMsg) {
+                    chatBody.appendChild(welcomeMsg);
+                }
+                historyLoadedInUI = false;
+                chatConfirmModal.classList.remove('active');
+                chatWindow.classList.remove('active');
+            });
+
+            const viewChatHistory = document.getElementById('viewChatHistory');
+            viewChatHistory.addEventListener('click', () => {
+                if (historyLoadedInUI) {
+                    // Déjà affiché, on remonte juste
+                    chatBody.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
+                }
+                if (chatHistory.length === 0) {
+                    alert("Aucun historique disponible pour le moment.");
+                    return;
+                }
+
+                // Charger l'historique dans l'interface
+                const welcomeMsg = chatBody.firstElementChild;
+                chatBody.innerHTML = '';
+                if (welcomeMsg) chatBody.appendChild(welcomeMsg);
+
+                chatHistory.forEach(msg => {
+                    const msgDiv = document.createElement('div');
+                    msgDiv.className = `chat-msg ${msg.type === 'user' ? 'msg-user' : 'msg-bot'}`;
+                    msgDiv.textContent = msg.text;
+                    chatBody.appendChild(msgDiv);
+                });
+
+                historyLoadedInUI = true;
+                chatBody.scrollTop = chatBody.scrollHeight;
+            });
+
+            btnChatNon.addEventListener('click', () => {
+                // On conserve l'historique
+                chatConfirmModal.classList.remove('active');
+                chatWindow.classList.remove('active');
+            });
+
+            function appendMessage(type, text) {
+                const msgDiv = document.createElement('div');
+                msgDiv.className = `chat-msg ${type === 'user' ? 'msg-user' : 'msg-bot'}`;
+                msgDiv.textContent = text;
+                chatBody.appendChild(msgDiv);
+                chatBody.scrollTop = chatBody.scrollHeight;
+                
+                chatHistory.push({ type, text });
+                localStorage.setItem('oyeo_chat_history_v2', JSON.stringify(chatHistory));
+            }
+
+            function sendMessage() {
+                const text = chatInputText.value.trim();
+                if (!text) return;
+                
+                appendMessage('user', text);
+                chatInputText.value = '';
+
+                setTimeout(() => {
+                    appendMessage('bot', "Merci pour votre message, un agent prendra rapidement contact avec vous, reste sur le chat, ne quittez pas s'il vous plait.");
+                }, 800);
+            }
+
+            sendChatBtn.addEventListener('click', sendMessage);
+            chatInputText.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') sendMessage();
             });
         });
     </script>
