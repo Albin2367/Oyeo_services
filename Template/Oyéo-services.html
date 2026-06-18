@@ -327,7 +327,8 @@
         }
 
         .about-content .section-tag {
-            text-align: left; /* Ou laisser vide si left est l'héritage par défaut */
+            text-align: left;
+            /* Ou laisser vide si left est l'héritage par défaut */
         }
 
         .about-content {
@@ -494,7 +495,8 @@
 
         /* --- 5. POURQUOI CHOISIR PRIVÉA --- */
         .why-section {
-            padding: 100px 0;
+            padding: 100px 0 60px 0;
+            /* Reduced bottom padding */
             background-color: var(--bg-light);
         }
 
@@ -536,7 +538,7 @@
 
         /* --- 6. COMMENT ÇA MARCHE --- */
         .steps-section {
-            padding: 100px 0;
+            padding: 40px 0 60px 0;
             background-color: #fbfaf5;
         }
 
@@ -550,6 +552,27 @@
         .step-item {
             text-align: center;
             position: relative;
+        }
+
+        /* Lignes de connexion entre les étapes */
+        .step-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 24px;
+            /* Centré par rapport à la puce de 50px */
+            left: calc(50% + 35px);
+            /* Commence un peu après le rond */
+            width: calc(100% - 40px);
+            /* Relie jusqu'avant le prochain rond */
+            border-top: 1.5px dashed var(--accent-gold);
+            opacity: 0.5;
+            z-index: 1;
+        }
+
+        @media (max-width: 900px) {
+            .step-item:not(:last-child)::after {
+                display: none;
+            }
         }
 
         .step-number {
@@ -583,7 +606,7 @@
 
         /* --- 7. TEMOIGNAGES --- */
         .testimonials-section {
-            padding: 100px 0;
+            padding: 60px 0 100px 0;
             background-color: var(--bg-light);
         }
 
@@ -790,15 +813,25 @@
             line-height: 1.6;
         }
 
+        .zones-section .container {
+            max-width: 95%; /* S'étend sur toute la largeur de la page avec une petite marge */
+        }
+
         .zones-grid {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             gap: 20px;
-            flex-wrap: wrap;
             margin-bottom: 40px;
-            max-width: 1000px;
+            max-width: 100%; /* Plus de limite de largeur */
             margin-left: auto;
             margin-right: auto;
+        }
+
+        .zones-row {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap; /* Garde le wrap pour les petits écrans */
         }
 
         .zone-card {
@@ -806,14 +839,17 @@
             border: 1px solid rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            padding: 22px 30px;
-            border-radius: 12px;
-            font-size: 0.9rem;
+            padding: 8px 5px; /* Marges réduites au maximum */
+            border-radius: 8px;
+            font-size: 0.75rem; /* Police plus petite */
+            line-height: 1.2;
             color: white;
             font-weight: 400;
             transition: var(--transition);
-            flex: 0 1 auto;
-            min-width: 180px;
+            flex: 1 1 0; /* Partage égal de l'espace disponible */
+            min-width: 0; /* Permet de rétrécir autant que nécessaire */
+            word-wrap: break-word; /* Coupe les mots trop longs si nécessaire */
+            text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -823,6 +859,12 @@
             background: rgba(255, 255, 255, 0.15);
             border-color: var(--accent-gold);
             transform: translateY(-3px);
+        }
+
+        .zone-more {
+            cursor: pointer;
+            border-style: dashed;
+            color: var(--accent-gold);
         }
 
         .btn-zones {
@@ -1245,22 +1287,35 @@
     <section class="zones-section">
         <div class="container">
             <span class="section-tag">Zones d'Intervention</span>
-            <h2>Paris Ouest & Île-de-France</h2>
+            <h2>Paris & Île-de-France</h2>
             <p class="zones-subtitle">Oyéo services intervient principalement à Paris Ouest et dans les communes premium
                 d'Île-de-France.</p>
 
             <div class="zones-grid">
-                <div class="zone-card">Paris 16e</div>
-                <div class="zone-card">Neuilly-sur-Seine</div>
-                <div class="zone-card">Boulogne-Billancourt</div>
-                <div class="zone-card">Saint-Cloud</div>
-                <div class="zone-card">Le Vésinet</div>
-                <div class="zone-card">Saint-Germain-en-Laye</div>
-                <div class="zone-card">Versailles</div>
-                <div class="zone-card">Levallois-Perret</div>
-                <div class="zone-card">Paris Ouest</div>
-                <div class="zone-card">Hauts-de-Seine</div>
-                <div class="zone-card">Yvelines</div>
+                <!-- Première ligne : 10 villes -->
+                <div class="zones-row">
+                    <div class="zone-card">Boissy-Saint-Léger</div>
+                    <div class="zone-card">Paris 16e</div>
+                    <div class="zone-card">Neuilly-sur-Seine</div>
+                    <div class="zone-card">Boulogne-Billancourt</div>
+                    <div class="zone-card">Saint-Cloud</div>
+                    <div class="zone-card">Vincennes</div>
+                    <div class="zone-card">Le Vésinet</div>
+                    <div class="zone-card">Saint-Germain-en-Laye</div>
+                    <div class="zone-card">Versailles</div>
+                    <div class="zone-card">Levallois-Perret</div>
+                </div>
+
+                <!-- Deuxième ligne : 7 villes -->
+                <div class="zones-row">
+                    <div class="zone-card">Paris</div>
+                    <div class="zone-card">Paris 7e</div>
+                    <div class="zone-card">Paris 8e</div>
+                    <div class="zone-card">Paris 15e</div>
+                    <div class="zone-card">Paris 17e</div>
+                    <div class="zone-card">Paris 19e</div>
+                    <div class="zone-card">Yvelines</div>
+                </div>
             </div>
 
             <div>
