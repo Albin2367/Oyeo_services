@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos - Privéa Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- Réinitialisation & Variables --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-cream: #F9F6F0;
+            --bg-white: #FFFFFF;
+            --text-dark: #1A2530;
+            --text-muted: #5A6573;
+            --primary-blue: #11223F;
+            --accent-gold: #C5A46E;
+            --accent-gold-hover: #B3925D;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-dark);
+            background-color: var(--bg-cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Styles Communs --- */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- BOUTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-outline-light {
+            background-color: transparent;
+            border: 1px solid var(--text-light, #ffffff);
+            color: var(--text-light, #ffffff);
+        }
+
+        .btn-outline-light:hover {
+            background-color: var(--text-light, #ffffff);
+            color: var(--primary-blue);
+        }
+
+        /* --- NAV --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            width: 100%;
+            background-color: var(--primary-blue);
+            color: #ffffff;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            font-size: 0.85rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-blue);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 80px 0 30px 0;
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .logo {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-gold);
+            padding-left: 5px;
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .contact-info i {
+            color: var(--accent-gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-lang {
+            color: var(--accent-gold);
+            cursor: pointer;
+        }
+
+        @media (max-width: 900px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            nav {
+                padding: 20px;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+        .section-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 1px;
+            background-color: var(--accent-gold);
+            margin: 0.8rem auto 0 auto;
+        }
+
+        /* --- 1. Header / Hero Section --- */
+        .hero {
+            position: relative;
+            height: 450px;
+            background: linear-gradient(rgba(17, 34, 63, 0.45), rgba(17, 34, 63, 0.45)),
+                url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #ffffff;
+            padding: 0 20px;
+        }
+
+        .hero .section-tag {
+            color: var(--accent-gold);
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            max-width: 600px;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- 2. Qui Sommes-Nous --- */
+        .about-section {
+            max-width: 1140px;
+            margin: 6rem auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image-container {
+            position: relative;
+        }
+
+        .about-img {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+            object-fit: cover;
+            height: 480px;
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background-color: var(--primary-blue);
+            color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            max-width: 220px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .experience-badge .years {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-badge .text {
+            font-size: 0.85rem;
+            line-height: 1.4;
+            opacity: 0.9;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .about-content .section-tag {
+            text-align: left;
+        }
+
+        .about-content h2 {
+            font-family: var(--font-serif);
+            font-size: 2.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .about-content p strong {
+            color: var(--text-dark);
+        }
+
+        .btn-link {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-top: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+
+        .btn-link:hover {
+            color: var(--accent-gold-hover);
+        }
+
+        /* --- 3. Nos Valeurs --- */
+        .values-section {
+            max-width: 1140px;
+            margin: 6rem auto;
+            padding: 0 20px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .value-card {
+            background-color: var(--bg-white);
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon-box {
+            width: 45px;
+            height: 45px;
+            background-color: #FDFBF7;
+            border: 1px solid #F3ECE0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .value-card:hover .icon-box {
+            background-color: var(--accent-gold);
+            color: #ffffff;
+            transform: scale(1.15);
+            box-shadow: 0 8px 20px rgba(197, 164, 110, 0.3);
+        }
+
+        .value-card:hover .icon-box i {
+            font-weight: 900; /* Fills up regular icons */
+        }
+
+        .value-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+
+        .value-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- 4. Notre Engagement --- */
+        .engagement-section {
+            max-width: 1140px;
+            margin: 6rem auto;
+            padding: 0 20px;
+        }
+
+        .engagement-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem 3rem;
+            margin-top: 3rem;
+        }
+
+        .engagement-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+            padding: 1.2rem;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
+
+        /* Effet surligné pour le premier élément comme sur la maquette */
+        .engagement-item.highlighted,
+        .engagement-item:hover {
+            background-color: #F0EAE1;
+            cursor: pointer;
+        }
+
+        .engagement-item .icon-box-small {
+            width: 40px;
+            height: 40px;
+            background-color: #ffffff;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            font-size: 1rem;
+            flex-shrink: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s ease;
+        }
+
+        .engagement-item .icon-box-small i {
+            transition: font-weight 0.3s;
+        }
+
+        .engagement-item.highlighted .icon-box-small,
+        .engagement-item:hover .icon-box-small {
+            background-color: var(--accent-gold);
+            color: #ffffff;
+        }
+
+        .engagement-item:hover .icon-box-small i {
+            font-weight: 900;
+        }
+
+        .engagement-text h4 {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .engagement-text p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* --- 5. Footer CTA --- */
+        .cta-footer {
+            background-color: var(--primary-blue);
+            color: #ffffff;
+            text-align: center;
+            padding: 5rem 20px;
+        }
+
+        .cta-footer h2 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .cta-footer p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+            font-weight: 300;
+        }
+
+        .cta-btn {
+            background-color: var(--accent-gold);
+            color: var(--primary-blue);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--accent-gold-hover);
+            transform: translateY(-2px);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 900px) {
+
+            .about-section,
+            .values-grid,
+            .engagement-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-section {
+                gap: 3rem;
+            }
+
+            .about-image-container {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .experience-badge {
+                right: 10px;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <span>Oyéo services</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="Oyéo-services.html">Accueil</a></li>
+            <li><a href="page-services.html">Services</a></li>
+            <li><a href="page-tarif.html">Tarifs</a></li>
+            <li><a href="Propos.html">A propos</a></li>
+            <li><a href="#">Engagements</a></li>
+            <li><a href="#">Devis</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="#" class="btn btn-outline-light" style="padding: 8px 20px;">
+                Demander une prestation</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <span class="section-tag">Notre Identité</span>
+        <h1>À Propos</h1>
+        <p>Privéa Services : votre quotidien, organisé avec soin.</p>
+    </header>
+
+    <section class="about-section">
+        <div class="about-image-container">
+            <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80"
+                alt="Cuisine soignée Privéa" class="about-img">
+            <div class="experience-badge">
+                <span class="years">10 ans</span>
+                <span class="text">d'excellence à votre service au quotidien.</span>
+            </div>
+        </div>
+        <div class="about-content">
+            <span class="section-tag">À Propos</span>
+            <h2>Qui sommes-nous ?</h2>
+            <p>Oyéo Services est né d'une ambition simple : proposer un service privé du quotidien, fiable, discret et soigné, pour les particuliers qui souhaitent gagner du temps sans renoncer à la qualité.</p>
+            <p>Notre approche repose sur la confiance, la ponctualité, la confidentialité et le sens du détail. Nous comprenons que déléguer son quotidien est un acte de confiance. C'est pourquoi nous mettons un point d'honneur à respecter votre intimité, votre domicile et vos habitudes avec le même soin que si c'était notre propre maison.</p>
+            <p>Aujourd'hui, nous sommes fiers d'accompagner de nombreuses familles dans leur quotidien, en leur offrant le luxe du temps retrouvé.</p>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <span class="section-tag">Fondamentaux</span>
+        <h2 class="section-title">Nos Valeurs</h2>
+
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="icon-box">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3>Discrétion</h3>
+                <p>Confidentialité absolue sur vos habitudes, votre domicile et votre vie privée.</p>
+            </div>
+            <div class="value-card">
+                <div class="icon-box">
+                    <i class="fa-regular fa-clock"></i>
+                </div>
+                <h3>Fiabilité</h3>
+                <p>Ponctualité irréprochable et respect de chaque engagement.</p>
+            </div>
+            <div class="value-card">
+                <div class="icon-box">
+                    <i class="fa-solid fa-gem"></i>
+                </div>
+                <h3>Soin</h3>
+                <p>Attention particulière et excellence dans chaque détail de nos interventions.</p>
+            </div>
+            <div class="value-card">
+                <div class="icon-box">
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+                <h3>Respect</h3>
+                <p>Considération pour votre domicile, vos biens et votre univers personnel.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="engagement-section">
+        <span class="section-tag">Engagements</span>
+        <h2 class="section-title">Notre Engagement envers Vous</h2>
+
+        <div class="engagement-grid">
+            <div class="engagement-item">
+                <div class="icon-box-small">
+                    <i class="fa-solid fa-receipt"></i>
+                </div>
+                <div class="engagement-text">
+                    <h4>Service Transparent</h4>
+                    <p>Facturation claire, devis détaillé et aucun frais caché.</p>
+                </div>
+            </div>
+            <div class="engagement-item">
+                <div class="icon-box-small">
+                    <i class="fa-solid fa-shield"></i>
+                </div>
+                <div class="engagement-text">
+                    <h4>Qualité Garantie</h4>
+                    <p>Prestations réalisées avec exigence et attention aux détails.</p>
+                </div>
+            </div>
+            <div class="engagement-item">
+                <div class="icon-box-small">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <div class="engagement-text">
+                    <h4>Respect de Votre Intimité</h4>
+                    <p>Confidentialité absolue et aucune information partagée.</p>
+                </div>
+            </div>
+            <div class="engagement-item">
+                <div class="icon-box-small">
+                    <i class="fa-regular fa-comment-dots"></i>
+                </div>
+                <div class="engagement-text">
+                    <h4>Communication Professionnelle</h4>
+                    <p>Réactivité, courtoisie et respect à chaque interaction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="cta-footer">
+        <h2>Rejoignez nos clients satisfaits</h2>
+        <p>Découvrez la différence Privéa Services et retrouvez le luxe du temps pour vous.</p>
+        <button class="cta-btn" onclick="handleCtaClick()">
+            Demander une prestation <i class="fa-solid fa-chevron-right" style="font-size: 0.75rem;"></i>
+        </button>
+    </footer>
+
+    <script>
+        function handleCtaClick() {
+            alert("Redirection vers le formulaire de demande de prestation...");
+        }
+    </script>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span>Oyéo services</span>
+                    </div>
+                    <p>Votre conciergerie privée moderne au service de votre bien-être et de votre maison au quotidien.
+                    </p>
+                    <div class="btn-outline-light"
+                        style="display:inline-block; padding: 5px 15px; border-radius: 4px; font-size: 0.75rem; border: 1px solid white; color: white;">
+                        Demander un devis en ligne</div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="Oyéo-services.html">Accueil</a></li>
+                        <li><a href="page-services.html">Services</a></li>
+                        <li><a href="page-tarif.html">Tarifs</a></li>
+                        <li><a href="Propos.html">A propos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Engagements</h4>
+                    <ul>
+                        <li><a href="#">Confidentialité</a></li>
+                        <li><a href="#">Qualité d'intervention</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Demander une solution</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="contact-info">
+                        <li><i class="fa-solid fa-phone"></i> +33 (0)1 00 00 00 00</li>
+                        <li><i class="fa-solid fa-envelope"></i> contact@priveaservices.fr</li>
+                        <li><i class="fa-solid fa-location-dot"></i> Paris, France</li>
+                        <li><i class="fa-solid fa-clock"></i> 7j/7 - 8h / 22h</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Oyéo services. Tous droits réservés.</p>
+                <div>
+                    <span class="footer-lang">FR <i class="fa-solid fa-chevron-down"
+                            style="font-size:0.6rem;"></i></span>
+                    <a href="#" style="margin-left: 20px; opacity:0.6; color: white; text-decoration: none;">Mentions
+                        Légales</a>
+                    <a href="#"
+                        style="margin-left: 20px; opacity:0.6; color: white; text-decoration: none;">Confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

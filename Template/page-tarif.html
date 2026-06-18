@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Tarifs - Privéa Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- VARIABLES DE STYLE --- */
+        :root {
+            --primary-blue: #112240;
+            --accent-gold: #c5a880;
+            --bg-light: #fcfbf7;
+            --bg-beige: #f6f3eb;
+            --text-dark: #333333;
+            --text-muted: #666666;
+            --text-light: #ffffff;
+            --card-bg: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        /* --- CONFIGURATION GÉNÉRALE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h2,
+        h3,
+        h4,
+        .serif-font {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-tag {
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: 600;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 40px;
+        }
+
+        /* --- BOUTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-gold {
+            background-color: var(--accent-gold);
+            color: var(--text-light);
+        }
+
+        .btn-gold:hover {
+            background-color: #b3956d;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-light {
+            background-color: transparent;
+            border: 1px solid var(--text-light);
+            color: var(--text-light);
+        }
+
+        .btn-outline-light:hover {
+            background-color: var(--text-light);
+            color: var(--primary-blue);
+        }
+
+        /* --- NAV --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            width: 100%;
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--text-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            font-size: 0.85rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-blue);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 80px 0 30px 0;
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .logo {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-gold);
+            padding-left: 5px;
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .contact-info i {
+            color: var(--accent-gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-lang {
+            color: var(--accent-gold);
+            cursor: pointer;
+        }
+
+        /* --- 1. HERO BANNER --- */
+        .tarifs-hero {
+            background: linear-gradient(rgba(17, 34, 64, 0.65), rgba(17, 34, 64, 0.55)),
+                url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            padding: 90px 20px;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .tarifs-hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .tarifs-hero p {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 0.9rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* --- 2. GRILLE DES TARIFS --- */
+        .tarifs-grid-section {
+            padding: 80px 0;
+        }
+
+        .tarifs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .tarif-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(197, 168, 128, 0.2);
+            /* Légère touche or */
+            transition: var(--transition);
+        }
+
+        .tarif-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(197, 168, 128, 0.15);
+            border-color: var(--accent-gold);
+        }
+
+        .tarif-img-wrapper {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .tarif-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tarif-body {
+            padding: 30px;
+        }
+
+        .tarif-body h3 {
+            font-size: 1.25rem;
+            color: #555555;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+        }
+
+        .tarif-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+        }
+
+        .tarif-price span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .tarif-features {
+            list-style: none;
+        }
+
+        .tarif-features li {
+            font-size: 0.85rem;
+            color: #555555;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tarif-features li i {
+            color: var(--accent-gold);
+            font-size: 0.8rem;
+        }
+
+        /* --- 3. COMMENT FONCTIONNENT NOS TARIFS --- */
+        .how-tarifs-section {
+            background-color: #f8f6f0;
+            padding: 80px 0;
+        }
+
+        .how-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px 60px;
+            margin-top: 20px;
+        }
+
+        .how-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .how-number {
+            width: 40px;
+            height: 40px;
+            background-color: #eee9dd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            flex-shrink: 0;
+        }
+
+        .how-content h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+        }
+
+        .how-content p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* --- 4. ACCORD BLOC BLEU (CONFIER VOTRE QUOTIDIEN) --- */
+        .cta-blue-block {
+            padding: 60px 0;
+            background-color: var(--bg-light);
+        }
+
+        .cta-box {
+            background-color: var(--primary-blue);
+            border-radius: 12px;
+            padding: 50px 40px;
+            text-align: center;
+            color: var(--text-light);
+            box-shadow: 0 10px 30px rgba(17, 34, 64, 0.15);
+        }
+
+        .cta-box .section-tag {
+            color: var(--accent-gold);
+            font-size: 10px;
+        }
+
+        .cta-box h3 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .cta-box p {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            font-weight: 300;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* --- 5. FAQ (QUESTIONS FRÉQUENTES) --- */
+        .faq-section {
+            padding: 20px 0 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            padding: 25px 30px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            border-color: rgba(197, 168, 128, 0.3);
+        }
+
+        .faq-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #fcf4eb;
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .faq-text {
+            flex: 1;
+        }
+
+        .faq-text h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+        }
+
+        .faq-text p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 1024px) {
+            .tarifs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .tarifs-grid,
+            .how-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tarifs-hero h2 {
+                font-size: 2.8rem;
+            }
+
+            .cta-box h3 {
+                font-size: 2rem;
+            }
+
+            .faq-trigger {
+                padding: 18px 20px;
+            }
+
+            .faq-content p {
+                padding: 0 20px 20px 20px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            <span>Oyéo services</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="Oyéo-services.html">Accueil</a></li>
+            <li><a href="page-services.html">Services</a></li>
+            <li><a href="page-tarif.html">Tarifs</a></li>
+            <li><a href="Propos.html">A propos</a></li>
+            <li><a href="#">Engagements</a></li>
+            <li><a href="#">Devis</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="#" class="btn btn-outline-light" style="padding: 8px 20px;">
+                Demander une prestation</a>
+        </div>
+    </nav>
+
+    <section class="tarifs-hero">
+        <span class="hero-tag">Tarifications</span>
+        <h2>Nos Tarifs</h2>
+        <p>Tarifs indicatifs. Chaque demande peut faire l'objet d'un devis personnalisé gratuit et sans engagement.</p>
+    </section>
+
+    <section class="tarifs-grid-section">
+        <div class="container">
+            <div class="tarifs-grid">
+
+                <div class="tarif-card">
+                    <div class="tarif-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=400&q=80"
+                            alt="Maison Impeccable">
+                    </div>
+                    <div class="tarif-body">
+                        <h3>Maison Impeccable</h3>
+                        <div class="tarif-price">39 € <span>/ heure</span></div>
+                        <ul class="tarif-features">
+                            <li><i class="fa-solid fa-check"></i> Minimum 2h</li>
+                            <li><i class="fa-solid fa-check"></i> Tarif selon surface et besoin</li>
+                            <li><i class="fa-solid fa-check"></i> Tarif zone variable</li>
+                            <li><i class="fa-solid fa-check"></i> Service premium inclus</li>
+                        </ul>
+                        <a href="#" class="btn btn-gold"
+                            style="display: block; text-align: center; margin-top: 20px;">Demander un devis</a>
+                    </div>
+                </div>
+
+                <div class="tarif-card">
+                    <div class="tarif-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80"
+                            alt="Courses & Quotidien">
+                    </div>
+                    <div class="tarif-body">
+                        <h3>Courses & Quotidien</h3>
+                        <div class="tarif-price">35 € <span>/ heure</span></div>
+                        <ul class="tarif-features">
+                            <li><i class="fa-solid fa-check"></i> Achats payés à l'avance</li>
+                            <li><i class="fa-solid fa-check"></i> Remboursé sur justificatif</li>
+                            <li><i class="fa-solid fa-check"></i> Frais de déplacement possibles</li>
+                            <li><i class="fa-solid fa-check"></i> Flexibilité horaire</li>
+                        </ul>
+                        <a href="#" class="btn btn-gold"
+                            style="display: block; text-align: center; margin-top: 20px;">Demander un devis</a>
+                    </div>
+                </div>
+
+                <div class="tarif-card">
+                    <div class="tarif-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&q=80"
+                            alt="Matin Privilège - Simple">
+                    </div>
+                    <div class="tarif-body">
+                        <h3>Matin Privilège - Simple</h3>
+                        <div class="tarif-price">69 € <span>hors achats</span></div>
+                        <ul class="tarif-features">
+                            <li><i class="fa-solid fa-check"></i> Petit-déjeuner élégant</li>
+                            <li><i class="fa-solid fa-check"></i> Livraison ponctuelle</li>
+                            <li><i class="fa-solid fa-check"></i> Présentation soignée</li>
+                            <li><i class="fa-solid fa-check"></i> Service discret</li>
+                        </ul>
+                        <a href="#" class="btn btn-gold"
+                            style="display: block; text-align: center; margin-top: 20px;">Demander un devis</a>
+                    </div>
+                </div>
+
+                <div class="tarif-card">
+                    <div class="tarif-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=400&q=80"
+                            alt="Matin Privilège - Romantique">
+                    </div>
+                    <div class="tarif-body">
+                        <h3>Matin Privilège - Romantique</h3>
+                        <div class="tarif-price">129 € <span>hors achats</span></div>
+                        <ul class="tarif-features">
+                            <li><i class="fa-solid fa-check"></i> Petit-déjeuner gourmet</li>
+                            <li><i class="fa-solid fa-check"></i> Fleurs fraîches</li>
+                            <li><i class="fa-solid fa-check"></i> Présentation premium</li>
+                            <li><i class="fa-solid fa-check"></i> Carte personnalisée</li>
+                        </ul>
+                        <a href="#" class="btn btn-gold"
+                            style="display: block; text-align: center; margin-top: 20px;">Demander un devis</a>
+                    </div>
+                </div>
+
+                <div class="tarif-card">
+                    <div class="tarif-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=400&q=80"
+                            alt="Matin Privilège - Signature">
+                    </div>
+                    <div class="tarif-body">
+                        <h3>Matin Privilège - Signature</h3>
+                        <div class="tarif-price">199 € <span>hors achats</span></div>
+                        <ul class="tarif-features">
+                            <li><i class="fa-solid fa-check"></i> Expérience complète</li>
+                            <li><i class="fa-solid fa-check"></i> Fleurs et décoration</li>
+                            <li><i class="fa-solid fa-check"></i> Surprise spéciale</li>
+                            <li><i class="fa-solid fa-check"></i> Service à domicile</li>
+                        </ul>
+                        <a href="#" class="btn btn-gold"
+                            style="display: block; text-align: center; margin-top: 20px;">Demander un devis</a>
+                    </div>
+                </div>
+
+                <div class="tarif-card">
+                    <div class="tarif-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=400&q=80"
+                            alt="Maison Prête">
+                    </div>
+                    <div class="tarif-body">
+                        <h3>Maison Prête</h3>
+                        <div class="tarif-price">120 € <span>minimum</span></div>
+                        <ul class="tarif-features">
+                            <li><i class="fa-solid fa-check"></i> Sur devis selon surface</li>
+                            <li><i class="fa-solid fa-check"></i> Préparation complète</li>
+                            <li><i class="fa-solid fa-check"></i> Courses et linge</li>
+                            <li><i class="fa-solid fa-check"></i> Ambiance accueillante</li>
+                        </ul>
+                        <a href="#" class="btn btn-gold"
+                            style="display: block; text-align: center; margin-top: 20px;">Demander un devis</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="how-tarifs-section">
+        <div class="container">
+            <h2 class="section-title">Comment fonctionnent nos tarifs ?</h2>
+
+            <div class="how-grid">
+                <div class="how-item">
+                    <div class="how-number">01</div>
+                    <div class="how-content">
+                        <h4>Devis personnalisé</h4>
+                        <p>Chaque demande fait l'objet d'un devis gratuit et sans engagement.</p>
+                    </div>
+                </div>
+
+                <div class="how-item">
+                    <div class="how-number">02</div>
+                    <div class="how-content">
+                        <h4>Aucun frais caché</h4>
+                        <p>Tous les postes sont détaillés dans le devis initial.</p>
+                    </div>
+                </div>
+
+                <div class="how-item">
+                    <div class="how-number">03</div>
+                    <div class="how-content">
+                        <h4>Facturation transparente</h4>
+                        <p>Vous savez exactement ce que vous payez et pourquoi.</p>
+                    </div>
+                </div>
+
+                <div class="how-item">
+                    <div class="how-number">04</div>
+                    <div class="how-content">
+                        <h4>Paiement sécurisé</h4>
+                        <p>Virement bancaire ou chèque, selon votre préférence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-blue-block">
+        <div class="container">
+            <div class="cta-box">
+                <h3>Obtenir un devis personnalisé</h3>
+                <p>Chaque situation est unique. Contactez-nous pour un devis adapté à vos besoins.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-gold">Demander votre devis</a>
+                    <a href="#" class="btn btn-outline-light">Voir les tarifs</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <span class="section-tag">FAQ</span>
+            <h2 class="section-title">Questions fréquentes</h2>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-icon">
+                        <i class="fa-regular fa-circle-question"></i>
+                    </div>
+                    <div class="faq-text">
+                        <h4>Comment sont calculés les tarifs ?</h4>
+                        <p>Les tarifs varient selon la zone d'intervention, la surface du domicile, la complexité de la
+                            mission et la fréquence des interventions.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-icon">
+                        <i class="fa-regular fa-circle-question"></i>
+                    </div>
+                    <div class="faq-text">
+                        <h4>Y a-t-il des frais cachés ?</h4>
+                        <p>Non. Notre facturation est totalement transparente. Le devis détaillé mentionne tous les
+                            postes avant validation.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-icon">
+                        <i class="fa-regular fa-circle-question"></i>
+                    </div>
+                    <div class="faq-text">
+                        <h4>Puis-je modifier ma prestation ?</h4>
+                        <p>Oui, vous pouvez ajuster les détails jusqu'à 24h avant l'intervention.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-icon">
+                        <i class="fa-regular fa-circle-question"></i>
+                    </div>
+                    <div class="faq-text">
+                        <h4>Quels sont les modes de paiement ?</h4>
+                        <p>Nous acceptons les virements bancaires et les chèques.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span>Oyéo services</span>
+                    </div>
+                    <p>Votre conciergerie privée moderne au service de votre bien-être et de votre maison au quotidien.
+                    </p>
+                    <div class="btn-outline-light"
+                        style="display:inline-block; padding: 5px 15px; border-radius: 4px; font-size: 0.75rem; border: 1px solid white; color: white;">
+                        Demander un devis en ligne</div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="Oyéo-services.html">Accueil</a></li>
+                        <li><a href="page-services.html">Services</a></li>
+                        <li><a href="page-tarif.html">Tarifs</a></li>
+                        <li><a href="Propos.html">A propos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Engagements</h4>
+                    <ul>
+                        <li><a href="#">Confidentialité</a></li>
+                        <li><a href="#">Qualité d'intervention</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Demander une solution</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="contact-info">
+                        <li><i class="fa-solid fa-phone"></i> +33 (0)1 00 00 00 00</li>
+                        <li><i class="fa-solid fa-envelope"></i> contact@priveaservices.fr</li>
+                        <li><i class="fa-solid fa-location-dot"></i> Paris, France</li>
+                        <li><i class="fa-solid fa-clock"></i> 7j/7 - 8h / 22h</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Oyéo services. Tous droits réservés.</p>
+                <div>
+                    <span class="footer-lang">FR <i class="fa-solid fa-chevron-down"
+                            style="font-size:0.6rem;"></i></span>
+                    <a href="#" style="margin-left: 20px; opacity:0.6; color: white; text-decoration: none;">Mentions
+                        Légales</a>
+                    <a href="#"
+                        style="margin-left: 20px; opacity:0.6; color: white; text-decoration: none;">Confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Le JavaScript de la FAQ n'est plus nécessaire avec le nouveau design statique.
+    </script>
+</body>
+
+</html>

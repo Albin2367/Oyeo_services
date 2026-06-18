@@ -26,6 +26,8 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='Oyéo-services.html'), name='home'),
     path('Oyéo-services.html', TemplateView.as_view(template_name='Oyéo-services.html'), name='home_html'),
     path('page-services.html', TemplateView.as_view(template_name='page-services.html'), name='services'),
+    path('page-tarif.html', TemplateView.as_view(template_name='page-tarif.html'), name='tarif'),
+    path('Propos.html', TemplateView.as_view(template_name='Propos.html'), name='propos'),
 ]
 
 if settings.DEBUG:
