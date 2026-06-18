@@ -16,9 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/contact/', include('contact.urls')),
+    path('', TemplateView.as_view(template_name='Oyéo-services.html'), name='home'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
+    # To serve the images directly from /images/ as referenced in the HTML:
+    urlpatterns += static('/images/', document_root=settings.BASE_DIR / 'Template' / 'images')
+
 
