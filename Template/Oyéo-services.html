@@ -848,6 +848,7 @@
             transition: var(--transition);
             flex: 1 1 0; /* Partage égal de l'espace disponible */
             min-width: 0; /* Permet de rétrécir autant que nécessaire */
+            min-height: 60px; /* Assure une hauteur identique pour toutes les formes */
             word-wrap: break-word; /* Coupe les mots trop longs si nécessaire */
             text-align: center;
             display: flex;
@@ -939,6 +940,183 @@
                 padding: 18px 20px;
                 max-width: 100%;
             }
+        }
+        /* --- CHAT WIDGET --- */
+        .chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .chat-btn {
+            background-color: var(--accent-gold);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .chat-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 320px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .chat-window.active {
+            display: flex;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chat-header {
+            background: var(--primary-blue);
+            color: white;
+            padding: 15px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-chat {
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .close-chat:hover {
+            color: white;
+        }
+
+        .chat-body {
+            height: 250px;
+            padding: 15px;
+            overflow-y: auto;
+            background: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chat-msg {
+            max-width: 85%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .msg-bot {
+            background: white;
+            color: #333;
+            align-self: flex-start;
+            border-bottom-left-radius: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .msg-user {
+            background: var(--primary-blue);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .chat-input {
+            display: flex;
+            border-top: 1px solid #eee;
+            background: white;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            outline: none;
+            font-size: 0.85rem;
+        }
+
+        .chat-input button {
+            background: none;
+            border: none;
+            padding: 0 15px;
+            color: var(--primary-blue);
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        .chat-confirm-modal {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            z-index: 10;
+        }
+        .chat-confirm-modal.active {
+            display: flex;
+        }
+        .chat-confirm-modal p {
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 500;
+        }
+        .chat-confirm-btns {
+            display: flex;
+            gap: 15px;
+        }
+        .btn-chat-confirm {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        .btn-chat-confirm:hover {
+            opacity: 0.8;
+        }
+        .btn-oui {
+            background-color: var(--accent-gold);
+            color: white;
+        }
+        .btn-non {
+            background-color: #eee;
+            color: #333;
         }
     </style>
 </head>
@@ -1307,7 +1485,7 @@
                 </div>
 
                 <!-- Deuxième ligne : 7 villes -->
-                <div class="zones-row">
+                <div class="zones-row" style="width: 85%; margin: 0 auto;">
                     <div class="zone-card">Paris</div>
                     <div class="zone-card">Paris 7e</div>
                     <div class="zone-card">Paris 8e</div>
@@ -1393,6 +1571,38 @@
         </div>
     </footer>
 
+    <!-- CHAT WIDGET HTML -->
+    <div class="chat-widget">
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-confirm-modal" id="chatConfirmModal">
+                <p>Voulez-vous vider l'historique de la discussion avant de fermer ?</p>
+                <div class="chat-confirm-btns">
+                    <button class="btn-chat-confirm btn-oui" id="btnChatOui">Oui</button>
+                    <button class="btn-chat-confirm btn-non" id="btnChatNon">Non</button>
+                </div>
+            </div>
+            <div class="chat-header">
+                <span><i class="fa-solid fa-headset"></i> Assistant Oyéo</span>
+                <div>
+                    <span class="close-chat" id="viewChatHistory" style="margin-right: 15px;" title="Voir l'historique des interactions"><i class="fa-solid fa-clock-rotate-left"></i></span>
+                    <span class="close-chat" id="closeChat"><i class="fa-solid fa-xmark"></i></span>
+                </div>
+            </div>
+            <div class="chat-body" id="chatBody">
+                <div class="chat-msg msg-bot">
+                    Bonjour, Bienvenu sur notre fil de discussions Oyéo services, veuillez decrire votre besoin afin que nous puissions vous assister.
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInputText" placeholder="Écrivez votre message...">
+                <button id="sendChatBtn"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <div class="chat-btn" id="chatBtn">
+            <i class="fa-solid fa-comment-dots"></i>
+        </div>
+    </div>
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             // Effet d'apparition douce des éléments lors du défilement
@@ -1423,6 +1633,105 @@
                 } else {
                     nav.classList.remove('scrolled');
                 }
+            });
+
+            // Chat Widget Logic
+            const chatBtn = document.getElementById('chatBtn');
+            const chatWindow = document.getElementById('chatWindow');
+            const closeChat = document.getElementById('closeChat');
+            const sendChatBtn = document.getElementById('sendChatBtn');
+            const chatInputText = document.getElementById('chatInputText');
+            const chatBody = document.getElementById('chatBody');
+
+            let chatHistory = JSON.parse(localStorage.getItem('oyeo_chat_history_v2') || '[]');
+            let historyLoadedInUI = false;
+
+            chatBtn.addEventListener('click', () => {
+                chatWindow.classList.toggle('active');
+            });
+
+            const chatConfirmModal = document.getElementById('chatConfirmModal');
+            const btnChatOui = document.getElementById('btnChatOui');
+            const btnChatNon = document.getElementById('btnChatNon');
+
+            closeChat.addEventListener('click', () => {
+                chatConfirmModal.classList.add('active');
+            });
+
+            btnChatOui.addEventListener('click', () => {
+                // On vide l'historique
+                chatHistory = [];
+                localStorage.removeItem('oyeo_chat_history_v2');
+                const welcomeMsg = chatBody.firstElementChild;
+                chatBody.innerHTML = '';
+                if (welcomeMsg) {
+                    chatBody.appendChild(welcomeMsg);
+                }
+                historyLoadedInUI = false;
+                chatConfirmModal.classList.remove('active');
+                chatWindow.classList.remove('active');
+            });
+
+            const viewChatHistory = document.getElementById('viewChatHistory');
+            viewChatHistory.addEventListener('click', () => {
+                if (historyLoadedInUI) {
+                    // Déjà affiché, on remonte juste
+                    chatBody.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
+                }
+                if (chatHistory.length === 0) {
+                    alert("Aucun historique disponible pour le moment.");
+                    return;
+                }
+
+                // Charger l'historique dans l'interface
+                const welcomeMsg = chatBody.firstElementChild;
+                chatBody.innerHTML = '';
+                if (welcomeMsg) chatBody.appendChild(welcomeMsg);
+
+                chatHistory.forEach(msg => {
+                    const msgDiv = document.createElement('div');
+                    msgDiv.className = `chat-msg ${msg.type === 'user' ? 'msg-user' : 'msg-bot'}`;
+                    msgDiv.textContent = msg.text;
+                    chatBody.appendChild(msgDiv);
+                });
+
+                historyLoadedInUI = true;
+                chatBody.scrollTop = chatBody.scrollHeight;
+            });
+
+            btnChatNon.addEventListener('click', () => {
+                // On conserve l'historique
+                chatConfirmModal.classList.remove('active');
+                chatWindow.classList.remove('active');
+            });
+
+            function appendMessage(type, text) {
+                const msgDiv = document.createElement('div');
+                msgDiv.className = `chat-msg ${type === 'user' ? 'msg-user' : 'msg-bot'}`;
+                msgDiv.textContent = text;
+                chatBody.appendChild(msgDiv);
+                chatBody.scrollTop = chatBody.scrollHeight;
+                
+                chatHistory.push({ type, text });
+                localStorage.setItem('oyeo_chat_history_v2', JSON.stringify(chatHistory));
+            }
+
+            function sendMessage() {
+                const text = chatInputText.value.trim();
+                if (!text) return;
+                
+                appendMessage('user', text);
+                chatInputText.value = '';
+
+                setTimeout(() => {
+                    appendMessage('bot', "Merci pour votre message, un agent prendra rapidement contact avec vous, reste sur le chat, ne quittez pas s'il vous plait.");
+                }, 800);
+            }
+
+            sendChatBtn.addEventListener('click', sendMessage);
+            chatInputText.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') sendMessage();
             });
         });
     </script>
