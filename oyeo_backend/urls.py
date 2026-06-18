@@ -28,6 +28,7 @@ urlpatterns = [
     path('page-services.html', TemplateView.as_view(template_name='page-services.html'), name='services'),
     path('page-tarif.html', TemplateView.as_view(template_name='page-tarif.html'), name='tarif'),
     path('Propos.html', TemplateView.as_view(template_name='Propos.html'), name='propos'),
+    path('Engagement.html', TemplateView.as_view(template_name='Engagement.html'), name='engagement'),
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Engagements - Privéa Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- Réinitialisation & Variables --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-cream: #F9F6F0;
+            --bg-white: #FFFFFF;
+            --text-dark: #1A2530;
+            --text-muted: #5A6573;
+            --primary-blue: #11223F;
+            --accent-gold: #C5A46E;
+            --accent-gold-hover: #B3925D;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-dark);
+            background-color: var(--bg-cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        /* --- Styles Communs --- */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-align: center;
+        }
+
+        /* --- BOUTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-outline-light {
+            background-color: transparent;
+            border: 1px solid #ffffff;
+            color: #ffffff;
+        }
+
+        .btn-outline-light:hover {
+            background-color: #ffffff;
+            color: var(--primary-blue);
+        }
+
+        /* --- NAV --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            width: 100%;
+            background-color: var(--primary-blue);
+            color: #ffffff;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            font-size: 0.85rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* --- FOOTER --- */
+        .site-footer {
+            background-color: var(--primary-blue);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 80px 0 30px 0;
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .logo {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-gold);
+            padding-left: 5px;
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .contact-info i {
+            color: var(--accent-gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-lang {
+            color: var(--accent-gold);
+            cursor: pointer;
+        }
+
+        /* --- 1. Hero Section --- */
+        .hero {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(rgba(17, 34, 63, 0.5), rgba(17, 34, 63, 0.5)), 
+                        url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #ffffff;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .hero h1::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 1px;
+            background-color: var(--accent-gold);
+            margin: 0.8rem auto 0 auto;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            font-weight: 300;
+            max-width: 600px;
+            opacity: 0.9;
+        }
+
+        /* --- 2. Grille des Engagements --- */
+        .engagements-section {
+            background-color: #FFFFFF;
+            width: 100%;
+            padding: 5rem 20px;
+        }
+
+        .engagements-container {
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+
+        .engagements-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+        }
+
+        .engagement-card {
+            background-color: #FFFFFF;
+            padding: 2.5rem;
+            border-radius: 18px;
+            border: 1px solid #EEE8DF;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .engagement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background-color: #F8F3EB;
+            border: 1px solid #EDE3D0;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            font-size: 1.15rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .engagement-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        .engagement-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            text-align: left;
+        }
+
+        /* --- 3. Charte de Confidentialité --- */
+        .charte-section {
+            max-width: 900px;
+            margin: 6rem auto;
+            padding: 0 20px;
+        }
+
+        .charte-box {
+            background-color: var(--bg-white);
+            padding: 3.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+        }
+
+        .charte-box h2 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .charte-intro {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2.5rem;
+            text-align: justify;
+        }
+
+        .charte-group {
+            margin-bottom: 2rem;
+        }
+
+        .charte-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .charte-title i {
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+        }
+
+        .charte-list {
+            list-style: none;
+            padding-left: 1.8rem;
+        }
+
+        .charte-list li {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.6rem;
+            position: relative;
+        }
+
+        .charte-list li::before {
+            content: "•";
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            position: absolute;
+            left: -15px;
+            top: -2px;
+        }
+
+        /* --- 4. Footer CTA --- */
+        .cta-footer {
+            background-color: var(--primary-blue);
+            color: #ffffff;
+            text-align: center;
+            padding: 5rem 20px;
+        }
+
+        .cta-footer h2 {
+            font-family: var(--font-serif);
+            font-size: 2.3rem;
+            color: var(--accent-gold);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .cta-footer p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+            font-weight: 300;
+        }
+
+        .cta-btn {
+            background-color: var(--accent-gold);
+            color: var(--primary-blue);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--accent-gold-hover);
+            transform: translateY(-2px);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            nav {
+                padding: 20px;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 850px) {
+            .engagements-grid {
+                grid-template-columns: 1fr;
+            }
+            .charte-box {
+                padding: 2rem 1.5rem;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .engagements-section {
+                padding: 3rem 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <span>Oyéo services</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="Oyéo-services.html">Accueil</a></li>
+            <li><a href="page-services.html">Services</a></li>
+            <li><a href="page-tarif.html">Tarifs</a></li>
+            <li><a href="Propos.html">A propos</a></li>
+            <li><a href="Engagement.html">Engagements</a></li>
+            <li><a href="#">Devis</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="#" class="btn btn-outline-light" style="padding: 8px 20px;">
+                Demander une prestation</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <span class="section-tag">Notre Engagement</span>
+        <h1>Nos Engagements</h1>
+        <p>Voici les engagements qui fondent notre relation avec vous.</p>
+    </header>
+
+    <main class="engagements-section">
+      <div class="engagements-container">
+        <div class="engagements-grid">
+            
+            <div class="engagement-card">
+                <div class="icon-box"><i class="fa-solid fa-lock"></i></div>
+                <h3>Confidentialité Totale</h3>
+                <p>Nous ne divulguons aucune information concernant nos clients, leur domicile ou leurs habitudes.</p>
+            </div>
+
+            <div class="engagement-card">
+                <div class="icon-box"><i class="fa-regular fa-eye"></i></div>
+                <h3>Aucune Photo sans Autorisation</h3>
+                <p>Vos images et vidéos restent privées. Aucune photo de votre domicile ne sera prise ou partagée sans votre consentement écrit.</p>
+            </div>
+
+            <div class="engagement-card">
+                <div class="icon-box"><i class="fa-solid fa-house-chimney"></i></div>
+                <h3>Respect du Domicile</h3>
+                <p>Votre maison est un espace sacré. Nous la traitons avec le même respect que nos propres demeures.</p>
+            </div>
+
+            <div class="engagement-card">
+                <div class="icon-box"><i class="fa-regular fa-file-lines"></i></div>
+                <h3>Validation Écrite</h3>
+                <p>Chaque intervention est confirmée par écrit avec tous les détails : adresse, horaire, budget et consignes spécifiques.</p>
+            </div>
+
+            <div class="engagement-card">
+                <div class="icon-box"><i class="fa-solid fa-chart-simple"></i></div>
+                <h3>Facturation Transparente</h3>
+                <p>Facturation claire et détaillée. Vous savez exactement ce que vous payez et pourquoi.</p>
+            </div>
+
+            <div class="engagement-card">
+                <div class="icon-box"><i class="fa-solid fa-bolt"></i></div>
+                <h3>Prestations Réalisées avec Soin</h3>
+                <p>Chaque mission est exécutée avec excellence, ponctualité et attention particulière.</p>
+            </div>
+
+            <div class="engagement-card">
+                <div class="icon-box"><i class="fa-regular fa-user"></i></div>
+                <h3>Communication Professionnelle</h3>
+                <p>Nous sommes toujours disponibles, courtois et réactifs pour répondre à vos questions.</p>
+            </div>
+
+            <div class="engagement-card">
+                <div class="icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Assurance Professionnelle</h3>
+                <p>Couverture complète pour votre tranquillité d'esprit lors de chaque intervention.</p>
+            </div>
+
+        </div>
+      </div>
+    </main>
+
+    <section class="charte-section">
+        <div class="charte-box">
+            <h2>Charte de Confidentialité</h2>
+            <p class="charte-intro">Privéa Services s'engage à ne divulguer aucune information concernant ses clients, leur domicile, leurs habitudes, leur famille ou leurs biens. Toute intervention est réalisée avec discrétion, respect et professionnalisme.</p>
+            
+            <div class="charte-group">
+                <div class="charte-title"><i class="fa-solid fa-check"></i> Vos données sont protégées</div>
+                <ul class="charte-list">
+                    <li>Nous ne partageons vos informations avec aucun tiers.</li>
+                    <li>Vos coordonnées sont conservées de manière sécurisée.</li>
+                    <li>Vous pouvez demander la suppression de vos données à tout moment.</li>
+                </ul>
+            </div>
+
+            <div class="charte-group">
+                <div class="charte-title"><i class="fa-solid fa-check"></i> Votre domicile reste privé</div>
+                <ul class="charte-list">
+                    <li>Aucune photo ne sera prise sans autorisation écrite.</li>
+                    <li>Les photos autorisées ne seront utilisées que pour vos besoins.</li>
+                    <li>Aucun détail de votre domicile ne sera commenté ou partagé.</li>
+                </ul>
+            </div>
+
+            <div class="charte-group">
+                <div class="charte-title"><i class="fa-solid fa-check"></i> Nos équipes sont formées</div>
+                <ul class="charte-list">
+                    <li>Formation obligatoire à la confidentialité et au respect.</li>
+                    <li>Signature de clauses de confidentialité strictes.</li>
+                    <li>Sélection rigoureuse de nos partenaires de service.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="cta-footer">
+        <h2>Sereinement confier votre quotidien</h2>
+        <p>Avec Privéa Services, votre tranquillité est notre priorité.</p>
+        <button class="cta-btn" onclick="handleCtaClick()">
+            Demander une prestation <i class="fa-solid fa-chevron-right" style="font-size: 0.75rem;"></i>
+        </button>
+    </footer>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span>Oyéo services</span>
+                    </div>
+                    <p>Votre conciergerie privée moderne au service de votre bien-être et de votre maison au quotidien.
+                    </p>
+                    <div class="btn-outline-light"
+                        style="display:inline-block; padding: 5px 15px; border-radius: 4px; font-size: 0.75rem; border: 1px solid white; color: white;">
+                        Demander un devis en ligne</div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="Oyéo-services.html">Accueil</a></li>
+                        <li><a href="page-services.html">Services</a></li>
+                        <li><a href="page-tarif.html">Tarifs</a></li>
+                        <li><a href="Propos.html">A propos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Engagements</h4>
+                    <ul>
+                        <li><a href="Engagement.html">Confidentialité</a></li>
+                        <li><a href="Engagement.html">Qualité d'intervention</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Demander une solution</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="contact-info">
+                        <li><i class="fa-solid fa-phone"></i> +33 (0)1 00 00 00 00</li>
+                        <li><i class="fa-solid fa-envelope"></i> contact@priveaservices.fr</li>
+                        <li><i class="fa-solid fa-location-dot"></i> Paris, France</li>
+                        <li><i class="fa-solid fa-clock"></i> 7j/7 - 8h / 22h</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Oyéo services. Tous droits réservés.</p>
+                <div>
+                    <span class="footer-lang">FR <i class="fa-solid fa-chevron-down"
+                            style="font-size:0.6rem;"></i></span>
+                    <a href="#" style="margin-left: 20px; opacity:0.6; color: white; text-decoration: none;">Mentions
+                        Légales</a>
+                    <a href="#"
+                        style="margin-left: 20px; opacity:0.6; color: white; text-decoration: none;">Confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function handleCtaClick() {
+            alert("Redirection vers le formulaire de demande de prestation...");
+        }
+    </script>
+</body>
+</html>
