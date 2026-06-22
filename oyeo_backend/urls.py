@@ -31,6 +31,7 @@ urlpatterns = [
     path('Engagement.html', TemplateView.as_view(template_name='Engagement.html'), name='engagement'),
     path('contact.html', TemplateView.as_view(template_name='contact.html'), name='contact_page'),
     path('Demande-prestation.html', TemplateView.as_view(template_name='Demande-prestation.html'), name='demande_prestation'),
+    path('Zones-Oyeo.html', TemplateView.as_view(template_name='Zones-Oyeo.html'), name='zones'),
 ]
 
 if settings.DEBUG:
