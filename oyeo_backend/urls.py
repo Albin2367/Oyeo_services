@@ -30,6 +30,7 @@ urlpatterns = [
     path('Propos.html', TemplateView.as_view(template_name='Propos.html'), name='propos'),
     path('Engagement.html', TemplateView.as_view(template_name='Engagement.html'), name='engagement'),
     path('contact.html', TemplateView.as_view(template_name='contact.html'), name='contact_page'),
+    path('Demande-prestation.html', TemplateView.as_view(template_name='Demande-prestation.html'), name='demande_prestation'),
 ]
 
 if settings.DEBUG:

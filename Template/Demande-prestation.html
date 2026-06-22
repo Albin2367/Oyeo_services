@@ -3,19 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demander une Prestation</title>
+    <title>Demander une Prestation - Oyéo Services</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        :root {
+            --bg-cream: #F9F6F0;
+            --bg-white: #FFFFFF;
+            --text-dark: #1A2530;
+            --text-muted: #5A6573;
+            --primary-blue: #11223F;
+            --accent-gold: #C5A46E;
+            --accent-gold-hover: #B3925D;
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-sans: 'Montserrat', sans-serif;
+        }
+
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: var(--font-sans);
             background-color: #fbfbfa;
         }
         h1, .serif-font {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: var(--font-serif);
         }
         .hero-bg {
             background-image: linear-gradient(rgba(44, 53, 64, 0.65), rgba(44, 53, 64, 0.65)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80');
@@ -36,10 +49,260 @@
         .input-custom::placeholder {
             color: #a39f99;
         }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        /* --- BOUTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-outline-light {
+            background-color: transparent;
+            border: 1px solid #ffffff;
+            color: #ffffff;
+        }
+
+        .btn-outline-light:hover {
+            background-color: #ffffff;
+            color: var(--primary-blue);
+        }
+
+        /* --- NAV --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            width: 100%;
+            background-color: var(--primary-blue);
+            color: #ffffff;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            font-size: 0.85rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-links a.active {
+            color: var(--accent-gold);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* --- FOOTER --- */
+        .site-footer {
+            background-color: var(--primary-blue);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 80px 0 30px 0;
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 80px;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .logo {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-gold);
+            padding-left: 5px;
+        }
+
+        .footer-contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .footer-contact-info i {
+            color: var(--accent-gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-lang {
+            color: var(--accent-gold);
+            cursor: pointer;
+        }
+
+        /* --- Status Messages --- */
+        .form-status {
+            padding: 14px 18px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            display: none;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-status.success {
+            display: flex;
+            background: #E8F5E9;
+            color: #2E7D32;
+            border: 1px solid #C8E6C9;
+        }
+
+        .form-status.error {
+            display: flex;
+            background: #FFEBEE;
+            color: #C62828;
+            border: 1px solid #FFCDD2;
+        }
+
+        .submit-btn.loading .spinner {
+            display: inline-block;
+        }
+
+        .submit-btn.loading .btn-text {
+            display: none;
+        }
+
+        .spinner {
+            display: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #ffffff;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 900px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            nav {
+                padding: 20px;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
     </style>
 </head>
-<body class="text-gray-800 antialiased pb-16">
+<body class="text-gray-800 antialiased">
 
+    <!-- === NAVIGATION === -->
+    <nav>
+        <div class="logo">
+            <span>Oyéo services</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="Oyéo-services.html">Accueil</a></li>
+            <li><a href="page-services.html">Services</a></li>
+            <li><a href="page-tarif.html">Tarifs</a></li>
+            <li><a href="Propos.html">A propos</a></li>
+            <li><a href="Engagement.html">Engagements</a></li>
+            <li><a href="#">Zones</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="Demande-prestation.html" class="btn btn-outline-light" style="padding: 8px 20px;">
+                Demander une prestation</a>
+        </div>
+    </nav>
+
+    <!-- === HERO === -->
     <div class="hero-bg text-white text-center py-20 px-4">
         <span class="text-[10px] uppercase tracking-[0.2em] text-amber-500 font-semibold block mb-2">FORMULAIRE</span>
         <h1 class="text-4xl md:text-5xl font-light mb-4">Demander une Prestation</h1>
@@ -49,48 +312,49 @@
         </p>
     </div>
 
+    <!-- === FORM SECTION === -->
     <div class="max-w-3xl mx-auto px-4 mt-12">
         <div class="bg-white p-6 md:p-10 rounded-2xl border border-gray-100 shadow-sm">
             
-            <form action="#" method="POST" class="space-y-5">
+            <form id="prestationForm" novalidate class="space-y-5">
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
                         <label class="block text-xs font-semibold text-gray-700 mb-2">Prénom *</label>
-                        <input type="text" placeholder="Votre prénom" required class="w-full px-4 py-3 text-sm rounded-xl input-custom transition-all">
+                        <input type="text" id="first_name" placeholder="Votre prénom" required class="w-full px-4 py-3 text-sm rounded-xl input-custom transition-all">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-gray-700 mb-2">Nom *</label>
-                        <input type="text" placeholder="Votre nom" required class="w-full px-4 py-3 text-sm rounded-xl input-custom transition-all">
+                        <input type="text" id="last_name" placeholder="Votre nom" required class="w-full px-4 py-3 text-sm rounded-xl input-custom transition-all">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
                         <label class="block text-xs font-semibold text-gray-700 mb-2">Téléphone *</label>
-                        <input type="tel" placeholder="+33 1 23 45 67 89" required class="w-full px-4 py-3 text-sm rounded-xl input-custom transition-all">
+                        <input type="tel" id="phone" placeholder="+33 1 23 45 67 89" required class="w-full px-4 py-3 text-sm rounded-xl input-custom transition-all">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-gray-700 mb-2">Email *</label>
-                        <input type="email" placeholder="votre@email.com" required class="w-full px-4 py-3 text-sm rounded-xl input-custom transition-all">
+                        <input type="email" id="email" placeholder="votre@email.com" required class="w-full px-4 py-3 text-sm rounded-xl input-custom transition-all">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
                         <label class="block text-xs font-semibold text-gray-700 mb-2">Ville *</label>
-                        <input type="text" placeholder="Paris, Neuilly..." required class="w-full px-4 py-3 text-sm rounded-xl input-custom transition-all">
+                        <input type="text" id="ville" placeholder="Paris, Neuilly..." required class="w-full px-4 py-3 text-sm rounded-xl input-custom transition-all">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-gray-700 mb-2">Adresse ou Zone *</label>
-                        <input type="text" placeholder="Votre adresse" required class="w-full px-4 py-3 text-sm rounded-xl input-custom transition-all">
+                        <input type="text" id="adresse" placeholder="Votre adresse" required class="w-full px-4 py-3 text-sm rounded-xl input-custom transition-all">
                     </div>
                 </div>
 
                 <div>
                     <label class="block text-xs font-semibold text-gray-700 mb-2">Service Souhaité *</label>
                     <div class="relative">
-                        <select required class="w-full px-4 py-3 text-sm rounded-xl input-custom transition-all appearance-none cursor-pointer">
+                        <select id="service" required class="w-full px-4 py-3 text-sm rounded-xl input-custom transition-all appearance-none cursor-pointer">
                             <option value="" disabled selected hidden>Sélectionnez un service</option>
                             <option value="menage">Ménage & Entretien</option>
                             <option value="conciergerie">Conciergerie Privée</option>
@@ -106,43 +370,232 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
                         <label class="block text-xs font-semibold text-gray-700 mb-2">Date Souhaitée</label>
-                        <input type="date" class="w-full px-4 py-3 text-sm rounded-xl input-custom transition-all cursor-pointer text-gray-500">
+                        <input type="date" id="date_souhaitee" class="w-full px-4 py-3 text-sm rounded-xl input-custom transition-all cursor-pointer text-gray-500">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-gray-700 mb-2">Horaire Souhaité</label>
-                        <input type="time" class="w-full px-4 py-3 text-sm rounded-xl input-custom transition-all cursor-pointer text-gray-500">
+                        <input type="time" id="horaire_souhaite" class="w-full px-4 py-3 text-sm rounded-xl input-custom transition-all cursor-pointer text-gray-500">
                     </div>
                 </div>
 
                 <div>
                     <label class="block text-xs font-semibold text-gray-700 mb-2">Budget Prévu (optionnel)</label>
-                    <input type="text" placeholder="Ex: 50 €" class="w-full px-4 py-3 text-sm rounded-xl input-custom transition-all">
+                    <input type="text" id="budget" placeholder="Ex: 50 €" class="w-full px-4 py-3 text-sm rounded-xl input-custom transition-all">
                 </div>
 
                 <div>
                     <label class="block text-xs font-semibold text-gray-700 mb-2">Description de votre besoin</label>
-                    <textarea placeholder="Décrivez votre demande en détail..." rows="4" class="w-full px-4 py-3 text-sm rounded-xl input-custom transition-all resize-none"></textarea>
+                    <textarea id="message" placeholder="Décrivez votre demande en détail..." rows="4" class="w-full px-4 py-3 text-sm rounded-xl input-custom transition-all resize-none"></textarea>
                 </div>
 
                 <div class="flex items-start pt-2">
                     <input id="consent" type="checkbox" required class="mt-1 h-4 w-4 rounded border-gray-300 text-slate-900 focus:ring-slate-900 cursor-pointer accent-slate-900">
                     <label for="consent" class="ml-3 text-[11px] text-gray-500 leading-normal cursor-pointer select-none">
-                        J'accepte d'être contacté par Privée Services concernant ma demande. Vos données restent confidentielles.
+                        J'accepte d'être contacté par Oyéo Services concernant ma demande. Vos données restent confidentielles.
                     </label>
                 </div>
 
                 <div class="pt-4">
-                    <button type="submit" class="w-full bg-[#1d273b] hover:bg-[#28354f] text-white text-sm font-medium py-4 rounded-xl transition-colors tracking-wide flex items-center justify-center space-x-2">
-                        <span>Envoyer ma demande</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 transform rotate-45 -mt-0.5">
-                            <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
-                        </svg>
+                    <button type="submit" id="submitBtn" class="submit-btn w-full bg-[#1d273b] hover:bg-[#28354f] text-white text-sm font-medium py-4 rounded-xl transition-colors tracking-wide flex items-center justify-center space-x-2">
+                        <span class="btn-text">Envoyer ma demande</span>
+                        <span class="spinner" id="btnSpinner"></span>
                     </button>
                 </div>
+
+                <div class="form-status" id="formStatus"></div>
 
             </form>
         </div>
     </div>
 
+    <!-- === SITE FOOTER === -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span>Oyéo services</span>
+                    </div>
+                    <p>Votre conciergerie privée moderne au service de votre bien-être et de votre maison au quotidien.
+                    </p>
+                    <a href="Demande-prestation.html" class="btn-outline-light"
+                        style="display:inline-block; padding: 5px 15px; border-radius: 4px; font-size: 0.75rem; border: 1px solid white; color: white;">
+                        Demander un devis en ligne</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="Oyéo-services.html">Accueil</a></li>
+                        <li><a href="page-services.html">Services</a></li>
+                        <li><a href="page-tarif.html">Tarifs</a></li>
+                        <li><a href="Propos.html">A propos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Engagements</h4>
+                    <ul>
+                        <li><a href="Engagement.html">Confidentialité</a></li>
+                        <li><a href="Engagement.html">Qualité d'intervention</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="Demande-prestation.html">Demander une solution</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="footer-contact-info">
+                        <li><i class="fa-solid fa-phone"></i> +33 (0)1 00 00 00 00</li>
+                        <li><i class="fa-solid fa-envelope"></i> contact@oyeo-services.fr</li>
+                        <li><i class="fa-solid fa-location-dot"></i> Paris, France</li>
+                        <li><i class="fa-solid fa-clock"></i> 7j/7 - 8h / 22h</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Oyéo services. Tous droits réservés.</p>
+                <div>
+                    <span class="footer-lang">FR <i class="fa-solid fa-chevron-down"
+                            style="font-size:0.6rem;"></i></span>
+                    <a href="#" style="margin-left: 20px; opacity:0.6; color: white; text-decoration: none;">Mentions
+                        Légales</a>
+                    <a href="#"
+                        style="margin-left: 20px; opacity:0.6; color: white; text-decoration: none;">Confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Pre-select service from URL parameter
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const serviceParam = urlParams.get('service');
+            if (serviceParam) {
+                const serviceSelect = document.getElementById('service');
+                if (serviceSelect) {
+                    // Check if it's a valid option
+                    const options = Array.from(serviceSelect.options).map(o => o.value);
+                    if (options.includes(serviceParam)) {
+                        serviceSelect.value = serviceParam;
+                    }
+                }
+            }
+        });
+
+        const form = document.getElementById('prestationForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnSpinner = document.getElementById('btnSpinner');
+        const formStatus = document.getElementById('formStatus');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Reset status
+            formStatus.className = 'form-status';
+            formStatus.style.display = 'none';
+
+            // Basic validation
+            const requiredFields = form.querySelectorAll('[required]');
+            let isValid = true;
+            requiredFields.forEach(field => {
+                if (field.type === 'checkbox') {
+                    if (!field.checked) {
+                        isValid = false;
+                        field.style.outline = '2px solid #E57373';
+                    } else {
+                        field.style.outline = '';
+                    }
+                } else {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.style.borderColor = '#E57373';
+                    } else {
+                        field.style.borderColor = '';
+                    }
+                }
+            });
+
+            if (!isValid) {
+                formStatus.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Veuillez remplir tous les champs obligatoires et accepter les conditions.';
+                formStatus.className = 'form-status error';
+                return;
+            }
+
+            // Loading state
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+            btnSpinner.style.display = 'inline-block';
+
+            // Format message content with all details
+            const serviceSelect = document.getElementById('service');
+            const selectedServiceText = serviceSelect.options[serviceSelect.selectedIndex].text;
+            const detailMessage = `Demande de prestation via formulaire Dédié :
+- Service souhaité : ${selectedServiceText}
+- Ville : ${document.getElementById('ville').value.trim()}
+- Adresse/Zone : ${document.getElementById('adresse').value.trim()}
+- Date souhaitée : ${document.getElementById('date_souhaitee').value || 'Non renseigné'}
+- Horaire souhaité : ${document.getElementById('horaire_souhaite').value || 'Non renseigné'}
+- Budget prévu : ${document.getElementById('budget').value.trim() || 'Non renseigné'}
+
+Description du besoin :
+${document.getElementById('message').value.trim() || 'Non renseigné'}`;
+
+            const formData = {
+                first_name: document.getElementById('first_name').value.trim(),
+                last_name: document.getElementById('last_name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                service: document.getElementById('service').value,
+                message: detailMessage
+            };
+
+            try {
+                const response = await fetch('/api/contact/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    formStatus.innerHTML = '<i class="fa-solid fa-circle-check"></i> Votre demande de prestation a bien été envoyée avec succès.';
+                    formStatus.className = 'form-status success';
+                    form.reset();
+                } else {
+                    let errorMsg = 'Une erreur est survenue. Veuillez réessayer.';
+                    if (data.errors) {
+                        const firstError = Object.values(data.errors)[0];
+                        if (Array.isArray(firstError)) errorMsg = firstError[0];
+                    }
+                    formStatus.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> ' + errorMsg;
+                    formStatus.className = 'form-status error';
+                }
+            } catch (error) {
+                formStatus.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Erreur de connexion. Veuillez vérifier votre connexion et réessayer.';
+                formStatus.className = 'form-status error';
+            } finally {
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+                btnSpinner.style.display = 'none';
+            }
+        });
+
+        // Remove error outline/border on focus
+        form.querySelectorAll('input, select, textarea').forEach(field => {
+            field.addEventListener('focus', () => {
+                if (field.type === 'checkbox') {
+                    field.style.outline = '';
+                } else {
+                    field.style.borderColor = '';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
