@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nos Engagements - Privéa Services</title>
+    <title>Nos Engagements - Oyéo services</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -732,7 +732,7 @@
     <section class="charte-section">
         <div class="charte-box">
             <h2>Charte de Confidentialité</h2>
-            <p class="charte-intro">Privéa Services s'engage à ne divulguer aucune information concernant ses clients, leur domicile, leurs habitudes, leur famille ou leurs biens. Toute intervention est réalisée avec discrétion, respect et professionnalisme.</p>
+            <p class="charte-intro">Oyéo services s'engage à ne divulguer aucune information concernant ses clients, leur domicile, leurs habitudes, leur famille ou leurs biens. Toute intervention est réalisée avec discrétion, respect et professionnalisme.</p>
             
             <div class="charte-group">
                 <div class="charte-title"><i class="fa-solid fa-check"></i> Vos données sont protégées</div>
@@ -765,24 +765,22 @@
 
     <footer class="cta-footer">
         <h2>Sereinement confier votre quotidien</h2>
-        <p>Avec Privéa Services, votre tranquillité est notre priorité.</p>
+        <p>Avec Oyéo services, votre tranquillité est notre priorité.</p>
         <a href="Demande-prestation.html" class="cta-btn">
             Demander une prestation <i class="fa-solid fa-chevron-right" style="font-size: 0.75rem;"></i>
         </a>
     </footer>
 
-    <footer class="site-footer">
+            <footer class="site-footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="logo">
-                        <span>Oyéo services</span>
+                        <span>Oyéo Services</span>
                     </div>
-                    <p>Votre conciergerie privée moderne au service de votre bien-être et de votre maison au quotidien.
-                    </p>
-                    <div class="btn-outline-light"
-                        style="display:inline-block; padding: 5px 15px; border-radius: 4px; font-size: 0.75rem; border: 1px solid white; color: white;">
-                        Demander un devis en ligne</div>
+                    <p>Votre assistance privée du quotidien</p>
+                    <p style="margin-top: 10px; font-size: 0.85em; opacity: 0.8;">SIREN : XXXXXXXX</p>
+                    <p style="font-size: 0.85em; opacity: 0.8;">Entreprise assurée RC Professionnelle</p>
                 </div>
 
                 <div class="footer-col">
@@ -796,20 +794,20 @@
                 </div>
 
                 <div class="footer-col">
-                    <h4>Engagements</h4>
+                    <h4>Informations</h4>
                     <ul>
-                        <li><a href="Engagement.html">Confidentialité</a></li>
-                        <li><a href="Engagement.html">Qualité d'intervention</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="#">Demander une solution</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">CGU</a> &nbsp;|&nbsp; <a href="#">CGV</a></li>
+                        <li><a href="#">Cookies</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
                     <h4>Contact</h4>
                     <ul class="contact-info">
-                        <li><i class="fa-solid fa-phone"></i> +33 (0)1 00 00 00 00</li>
-                        <li><i class="fa-solid fa-envelope"></i> contact@priveaservices.fr</li>
+                        <li><i class="fa-solid fa-phone"></i> +33 6 67 86 64 08</li>
+                        <li><i class="fa-solid fa-envelope"></i> contact@oyeo-services.fr</li>
                         <li><i class="fa-solid fa-location-dot"></i> Paris, France</li>
                         <li><i class="fa-solid fa-clock"></i> 7j/7 - 8h / 22h</li>
                     </ul>
@@ -817,14 +815,12 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2026 Oyéo services. Tous droits réservés.</p>
                 <div>
-                    <span class="footer-lang">FR <i class="fa-solid fa-chevron-down"
-                            style="font-size:0.6rem;"></i></span>
-                    <a href="#" style="margin-left: 20px; opacity:0.6; color: white; text-decoration: none;">Mentions
-                        Légales</a>
-                    <a href="#"
-                        style="margin-left: 20px; opacity:0.6; color: white; text-decoration: none;">Confidentialité</a>
+                    <p>&copy; 2026 Oyéo Services - Tous droits réservés.</p>
+                    <p style="font-size: 0.85em; opacity: 0.8; margin-top: 5px;">Entreprise déclarée – Assurance RC Professionnelle – Confidentialité garantie</p>
+                </div>
+                <div>
+                    <span class="footer-lang">FR <i class="fa-solid fa-chevron-down" style="font-size:0.6rem;"></i></span>
                 </div>
             </div>
         </div>
@@ -981,9 +977,14 @@
                 appendMessage('user', text);
                 chatInputText.value = '';
 
-                setTimeout(() => {
-                    appendMessage('bot', "Merci pour votre message, un agent prendra rapidement contact avec vous, reste sur le chat, ne quittez pas s'il vous plait.");
-                }, 800);
+                // Vérifier si le message de bienvenue/attente automatique a déjà été envoyé dans l'historique actuel
+                const hasSentAutoReply = chatHistory.some(msg => msg.type === 'bot' && msg.text.includes("Merci pour votre message"));
+                
+                if (!hasSentAutoReply) {
+                    setTimeout(() => {
+                        appendMessage('bot', "Merci pour votre message, un agent prendra rapidement contact avec vous, veuillez rester sur le chat, ne quittez pas s'il vous plait.");
+                    }, 800);
+                }
             }
 
             if(sendChatBtn) {

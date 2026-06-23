@@ -494,7 +494,7 @@
             opacity: 0.8;
         }
 
-        /* --- 5. POURQUOI CHOISIR PRIVÉA --- */
+        /* --- 5. POURQUOI CHOISIR OYÉO --- */
         .why-section {
             padding: 100px 0 60px 0;
             /* Reduced bottom padding */
@@ -1143,8 +1143,6 @@
 
         /* --- HERO BANNER (NOS SERVICES) --- */
         .services-hero {
-            background: linear-gradient(rgba(17, 34, 64, 0.65), rgba(17, 34, 64, 0.55)), 
-                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
             padding: 100px 20px;
             text-align: center;
             color: var(--text-light);
@@ -1431,18 +1429,16 @@
     </div>
 
 
-    <footer>
+            <footer class="site-footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="logo">
-                        <span>Oyéo services</span>
+                        <span>Oyéo Services</span>
                     </div>
-                    <p>Votre conciergerie privée moderne au service de votre bien-être et de votre maison au quotidien.
-                    </p>
-                    <div class="btn-outline"
-                        style="display:inline-block; padding: 5px 15px; border-radius: 4px; font-size: 0.75rem;">
-                        Demander un devis en ligne</div>
+                    <p>Votre assistance privée du quotidien</p>
+                    <p style="margin-top: 10px; font-size: 0.85em; opacity: 0.8;">SIREN : XXXXXXXX</p>
+                    <p style="font-size: 0.85em; opacity: 0.8;">Entreprise assurée RC Professionnelle</p>
                 </div>
 
                 <div class="footer-col">
@@ -1456,20 +1452,20 @@
                 </div>
 
                 <div class="footer-col">
-                    <h4>Engagements</h4>
+                    <h4>Informations</h4>
                     <ul>
-                        <li><a href="#">Confidentialité</a></li>
-                        <li><a href="#">Qualité d'intervention</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="#">Demander une solution</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">CGU</a> &nbsp;|&nbsp; <a href="#">CGV</a></li>
+                        <li><a href="#">Cookies</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
                     <h4>Contact</h4>
                     <ul class="contact-info">
-                        <li><i class="fa-solid fa-phone"></i> +33 (0)1 00 00 00 00</li>
-                        <li><i class="fa-solid fa-envelope"></i> contact@priveaservices.fr</li>
+                        <li><i class="fa-solid fa-phone"></i> +33 6 67 86 64 08</li>
+                        <li><i class="fa-solid fa-envelope"></i> contact@oyeo-services.fr</li>
                         <li><i class="fa-solid fa-location-dot"></i> Paris, France</li>
                         <li><i class="fa-solid fa-clock"></i> 7j/7 - 8h / 22h</li>
                     </ul>
@@ -1477,12 +1473,12 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2026 Oyéo services. Tous droits réservés.</p>
                 <div>
-                    <span class="footer-lang">FR <i class="fa-solid fa-chevron-down"
-                            style="font-size:0.6rem;"></i></span>
-                    <a href="#" style="margin-left: 20px; opacity:0.6;">Mentions Légales</a>
-                    <a href="#" style="margin-left: 20px; opacity:0.6;">Confidentialité</a>
+                    <p>&copy; 2026 Oyéo Services - Tous droits réservés.</p>
+                    <p style="font-size: 0.85em; opacity: 0.8; margin-top: 5px;">Entreprise déclarée – Assurance RC Professionnelle – Confidentialité garantie</p>
+                </div>
+                <div>
+                    <span class="footer-lang">FR <i class="fa-solid fa-chevron-down" style="font-size:0.6rem;"></i></span>
                 </div>
             </div>
         </div>
@@ -1659,9 +1655,14 @@
                 appendMessage('user', text);
                 chatInputText.value = '';
 
-                setTimeout(() => {
-                    appendMessage('bot', "Merci pour votre message, un agent prendra rapidement contact avec vous, reste sur le chat, ne quittez pas s'il vous plait.");
-                }, 800);
+                // Vérifier si le message de bienvenue/attente automatique a déjà été envoyé dans l'historique actuel
+                const hasSentAutoReply = chatHistory.some(msg => msg.type === 'bot' && msg.text.includes("Merci pour votre message"));
+                
+                if (!hasSentAutoReply) {
+                    setTimeout(() => {
+                        appendMessage('bot', "Merci pour votre message, un agent prendra rapidement contact avec vous, veuillez rester sur le chat, ne quittez pas s'il vous plait.");
+                    }, 800);
+                }
             }
 
             sendChatBtn.addEventListener('click', sendMessage);
