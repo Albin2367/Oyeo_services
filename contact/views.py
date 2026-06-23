@@ -26,8 +26,7 @@ class ContactCreateView(APIView):
             return Response(
                 {
                     "success": True,
-                    "message": "Votre message a bien été envoyé. Nous vous contacterons rapidement.",
-                    "data": serializer.data
+                    "message": "Votre message a bien été envoyé. Nous vous contacterons rapidement."
                 },
                 status=status.HTTP_201_CREATED
             )
