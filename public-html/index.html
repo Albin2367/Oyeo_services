@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nos Services - Oyéo services</title>
+    <title>Oyéo services - Votre quotidien, organisé avec soin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -21,7 +21,6 @@
             --text-dark: #333333;
             --text-light: #ffffff;
             --card-bg: #ffffff;
-            --bullet-color: #d8c3a5;
             --transition: all 0.3s ease;
         }
 
@@ -44,7 +43,7 @@
         h2,
         h3,
         .serif-font {
-            font-family: 'Cormorant+Garamond', serif;
+            font-family: 'Cormorant Garamond', Georgia, serif;
             font-weight: 500;
         }
 
@@ -338,9 +337,11 @@
         }
 
         .about-content h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
             font-size: 3rem;
             color: var(--primary-blue);
             margin-bottom: 30px;
+            font-weight: 500;
         }
 
         .about-text {
@@ -367,7 +368,7 @@
 
         /* --- 3. NOS SERVICES PRINCIPAUX --- */
         .services-section {
-            padding: 100px 0;
+            padding: 40px 0 100px 0;
             background-color: #fbfaf5;
         }
 
@@ -481,13 +482,15 @@
         }
 
         .counter-item h3 {
+            font-family: 'Montserrat', sans-serif;
             font-size: 2.5rem;
             color: var(--accent-gold);
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 5px;
         }
 
         .counter-item p {
+            font-family: 'Montserrat', sans-serif;
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -1119,167 +1122,11 @@
             background-color: #eee;
             color: #333;
         }
-
-        /* --- BOUTONS --- */
-        .btn-blue {
-            display: inline-block;
-            background-color: var(--primary-blue);
-            color: var(--text-light);
-            padding: 14px 30px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-
-        .btn-blue:hover {
-            background-color: #1d3557;
-            transform: translateY(-2px);
-        }
-
-        /* --- HERO BANNER (NOS SERVICES) --- */
-        .services-hero {
-            padding: 100px 20px;
-            text-align: center;
-            color: var(--text-light);
-        }
-
-        .services-hero h2 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            font-weight: 400;
-        }
-
-        .services-hero p {
-            max-width: 650px;
-            margin: 0 auto;
-            font-size: 0.95rem;
-            font-weight: 300;
-            opacity: 0.9;
-        }
-
-        /* --- BLOCS DE PRESTATIONS --- */
-        .prestations-wrapper {
-            background-color: #f7f4ef;
-            padding: 20px 0;
-        }
-
-        .prestation-section {
-            padding: 30px 0;
-        }
-
-        .prestation-row {
-            display: grid;
-            grid-template-columns: 0.8fr 1.2fr;
-            gap: 60px;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .prestation-row.reverse {
-            direction: rtl;
-        }
-
-        .prestation-row.reverse .prestation-info,
-        .prestation-row.reverse .prestation-details-box {
-            direction: ltr; 
-        }
-
-        .icon-circle {
-            width: 65px;
-            height: 65px;
-            background-color: #f3efe6;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-gold);
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-
-        .prestation-info h3 {
-            font-size: 2.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 15px;
-        }
-
-        .prestation-description {
-            font-size: 0.95rem;
-            color: #666;
-            font-style: italic;
-            max-width: 450px;
-        }
-
-        .prestation-details-box {
-            background-color: var(--bg-white, #ffffff);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .features-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px 35px;
-            list-style: none;
-        }
-
-        .features-list li {
-            font-size: 0.85rem;
-            color: #555;
-            position: relative;
-            padding-left: 18px;
-            padding-top: 2px;
-            padding-bottom: 2px;
-        }
-
-        .features-list li::before {
-            content: "•";
-            color: var(--accent-gold);
-            font-size: 1.2rem;
-            position: absolute;
-            left: 0;
-            top: -2px;
-        }
-
-        @media (max-width: 900px) {
-            .prestation-row, .prestation-row.reverse {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                direction: ltr;
-            }
-            .prestation-row.reverse .prestation-info,
-            .prestation-row.reverse .prestation-details-box {
-                direction: ltr;
-            }
-            .services-hero h2 {
-                font-size: 2.8rem;
-            }
-            .prestation-info h3 {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .features-list {
-                grid-template-columns: 1fr;
-            }
-            .prestation-details-box {
-                padding: 25px;
-            }
-        }
     
         a, a:hover, .btn, .btn-link, .btn-outline-light, .btn-gold {
             text-decoration: none !important;
         }
 </style>
-
 </head>
 
 <body>
@@ -1304,130 +1151,375 @@
             </div>
         </nav>
 
-            <section class="services-hero">
-        <span class="hero-tag">Nos Prestations</span>
-        <h2>Nos Services</h2>
-        <p>Découvrez notre gamme complète de services privés du quotidien, conçus pour vous faire gagner du temps et vous garantir sérénité et qualité.</p>
+        <div class="hero-content">
+            <span class="hero-tag">Service privé & conciergerie</span>
+            <h1>Votre quotidien,<br><span>organisé avec soin</span></h1>
+            <p class="hero-subtitle">Des prestations sur-mesure de haute qualité : assistance administrative,
+                intendance, pressing, garde d'animaux, préparation de repas et entretien de la maison.</p>
+            <div class="hero-buttons">
+                <a href="Demande-prestation.html" class="btn btn-gold">Demander votre prestation </a>
+                <a href="#" class="btn btn-outline">Nous contacter sur WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="hero-footer-info">
+            <span><i class="fa-solid fa-shield-halved"></i> Confidentialité</span>
+            <span><i class="fa-regular fa-star"></i> Excellence</span>
+            <span><i class="fa-regular fa-clock"></i> Ponctualité</span>
+        </div>
+        <div style="text-align: center; padding-bottom: 30px; color: rgba(255,255,255,0.7);">
+            <i class="fa-solid fa-computer-mouse" style="font-size: 1.5rem;"></i>
+        </div>
+    </header>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80"
+                        alt="Intérieur maison propre" class="about-img">
+                    <div class="about-badge">
+                        <p>10 ans</p>
+                        <span>d'excellence à votre service au quotidien.</span>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="section-tag">À propos</span>
+                    <h2>Qui sommes-nous ?</h2>
+                    <p class="about-text">Oyéo services est né d'une ambition simple : proposer un <strong>service
+                            d'excellence de proximité</strong>, fiable, discret et sur-mesure pour les particuliers qui
+                        souhaitent gagner du temps sans renoncer à la qualité.</p>
+                    <p class="about-text">Notre équipe se repose sur trois piliers : la qualité du service, la
+                        confidentialité et le sens du détail. Nous n'intervenons que pour que votre quotidien soit un
+                        havre de paix.</p>
+                    <a href="#" class="read-more">En savoir plus <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <div class="prestations-wrapper">
-    <div class="container">
+    <section class="services-section">
+        <div class="container">
+            <span class="section-tag">Nos Prestations</span>
+            <h2 class="section-title">Nos Services Principaux</h2>
+            <p class="section-subtitle">Découvrez nos offres conçues pour vous offrir le luxe du temps retrouvé.</p>
 
-        <div class="prestation-section">
-            <div class="prestation-row">
-                <div class="prestation-info">
-                    <div class="icon-circle"><i class="fa-solid fa-house"></i></div>
-                    <h3>Maison Impeccable</h3>
-                    <p class="prestation-description">Nous prenons soin de votre intérieur avec discrétion, méthode et exigence.</p>
-                    <a href="Demande-prestation.html?service=menage" class="btn-blue">Demander cette prestation</a>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img-container">
+                        <img src="images/maison-impeccable.png" alt="Maison Impeccable">
+                    </div>
+                    <div class="service-content">
+                        <h3>Maison Impeccable</h3>
+                        <p>Nettoyage complet et régulier de votre intérieur : dépoussiérage, nettoyage de sols, vitres
+                            et entretien sur-mesure.</p>
+                        <div class="service-footer">
+                            <span class="price">À partir de 25€/h</span>
+                            <span class="service-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
                 </div>
-                <div class="prestation-details-box">
-                    <ul class="features-list">
-                        <li>Nettoyage premium</li>
-                        <li>Repassage</li>
-                        <li>Changement des draps</li>
-                        <li>Remise en ordre après événement</li>
-                        <li>Rangement</li>
-                        <li>Pliage du linge</li>
-                        <li>Préparation avant réception</li>
-                        <li>Entretien avant retour de voyage</li>
-                    </ul>
+
+                <div class="service-card">
+                    <div class="service-img-container">
+                        <img src="images/matin-privilege.png" alt="Matin Privilège">
+                    </div>
+                    <div class="service-content">
+                        <h3>Matin Privilège</h3>
+                        <p>Préparation et livraison de petits-déjeuners frais chez vous pour un moment d'exception pour
+                            bien démarrer votre journée.</p>
+                        <div class="service-footer">
+                            <span class="price">À partir de 35€</span>
+                            <span class="service-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img-container">
+                        <img src="images/courses-quotidien.png" alt="Courses & Quotidien">
+                    </div>
+                    <div class="service-content">
+                        <h3>Courses & Quotidien</h3>
+                        <p>Nous faisons vos courses de la semaine selon votre liste et les rangeons directement chez
+                            vous pour vous faire gagner du temps.</p>
+                        <div class="service-footer">
+                            <span class="price">À partir de 30€/Livraison</span>
+                            <span class="service-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img-container">
+                        <img src="images/repassage-linge.png" alt="Repassage & Linge">
+                    </div>
+                    <div class="service-content">
+                        <h3>Repassage & Linge</h3>
+                        <p>Soin de votre linge délicat, repassage méticuleux et rangement soigné directement dans vos
+                            armoires.</p>
+                        <div class="service-footer">
+                            <span class="price">À partir de 19€/kg</span>
+                            <span class="service-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img-container">
+                        <img src="images/jardinage-exterieur.png" alt="Jardinage & Extérieur">
+                    </div>
+                    <div class="service-content">
+                        <h3>Jardinage & Extérieur</h3>
+                        <p>Entretien de vos espaces verts, tonte de pelouse, taille de haies et aménagement de
+                            terrasses.</p>
+                        <div class="service-footer">
+                            <span class="price">Sur devis</span>
+                            <span class="service-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-img-container">
+                        <img src="images/retour-voyage.png" alt="Retour de Voyage">
+                    </div>
+                    <div class="service-content">
+                        <h3>Retour de Voyage</h3>
+                        <p>Retrouvez un frigo plein, des lits propres et une maison aérée et accueillante à votre retour
+                            de déplacement.</p>
+                        <div class="service-footer">
+                            <span class="price">Sur devis</span>
+                            <span class="service-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="center-btn-wrapper">
+                <a href="#" class="btn btn-dark">Découvrir l'ensemble des services</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="counter-section">
+        <div class="container">
+            <div class="counter-grid">
+                <div class="counter-item">
+                    <h3 id="count1">300+</h3>
+                    <p>Prestations Réalisées</p>
+                </div>
+                <div class="counter-item">
+                    <h3 id="count2">98%</h3>
+                    <p>Clients Satisfaits</p>
+                </div>
+                <div class="counter-item">
+                    <h3 id="count3">24h</h3>
+                    <p>Délai de Réponse</p>
+                </div>
+                <div class="counter-item">
+                    <h3 id="count4">5+</h3>
+                    <p>Années d'expérience</p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="prestation-section">
-            <div class="prestation-row reverse">
-                <div class="prestation-info">
-                    <div class="icon-circle"><i class="fa-solid fa-mug-hot"></i></div>
-                    <h3>Matin Privilège</h3>
-                    <p class="prestation-description">Offrez un réveil élégant, préparé et livré avec soin.</p>
-                    <a href="Demande-prestation.html?service=autre" class="btn-blue">Demander cette prestation</a>
+    <section class="why-section">
+        <div class="container">
+            <span class="section-tag">Notre Engagement</span>
+            <h2 class="section-title">Pourquoi choisir Oyéo services ?</h2>
+            <p class="section-subtitle">Nous mettons tout en œuvre pour vous offrir le meilleur service basé sur la
+                confiance.</p>
+
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h4>Sécurité & Discrétion</h4>
+                    <p>Une totale confidentialité de votre vie privée et de vos espaces de vie.</p>
                 </div>
-                <div class="prestation-details-box">
-                    <ul class="features-list">
-                        <li>Livraison de petit-déjeuner</li>
-                        <li>Fleurs</li>
-                        <li>Surprise romantique</li>
-                        <li>Brunch familial</li>
-                        <li>Viennoiseries</li>
-                        <li>Carte personnalisée</li>
-                        <li>Anniversaire</li>
-                        <li>Attention spéciale au réveil</li>
-                    </ul>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fa-solid fa-user-tie"></i></div>
+                    <h4>Personnel Expérimenté</h4>
+                    <p>Des professionnels recrutés avec soin et formés aux critères d'exigence élevés.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fa-solid fa-clock"></i></div>
+                    <h4>Gain de temps</h4>
+                    <p>Libérez-vous de l'esprit des contraintes logistiques du quotidien.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fa-solid fa-star"></i></div>
+                    <h4>Sur-mesure</h4>
+                    <p>Chaque formule s'adapte à vos réels besoins.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fa-solid fa-comments"></i></div>
+                    <h4>Communication claire</h4>
+                    <p>Un interlocuteur unique disponible par message et appel.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fa-solid fa-percent"></i></div>
+                    <h4>Tarification transparente</h4>
+                    <p>Aucun coût caché, des tarifs fixes communiqués en amont.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fa-solid fa-handshake"></i></div>
+                    <h4>Respect du domicile</h4>
+                    <p>Soin extrême apporté à vos meubles et objets précieux.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fa-solid fa-leaf"></i></div>
+                    <h4>Éco-responsable</h4>
+                    <p>Utilisation prioritaire de produits respectueux de votre environnement.</p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="prestation-section">
-            <div class="prestation-row">
-                <div class="prestation-info">
-                    <div class="icon-circle"><i class="fa-solid fa-basket-shopping"></i></div>
-                    <h3>Courses & Quotidien</h3>
-                    <p class="prestation-description">Nous gérons vos petites urgences et vos courses du quotidien.</p>
-                    <a href="Demande-prestation.html?service=autre" class="btn-blue">Demander cette prestation</a>
+    <section class="steps-section">
+        <div class="container">
+            <span class="section-tag">Processus</span>
+            <h2 class="section-title">Comment ça marche ?</h2>
+            <p class="section-subtitle">Une prise en charge rapide et simplifiée en 4 étapes clés.</p>
+
+            <div class="steps-grid">
+                <div class="step-item">
+                    <div class="step-number">01</div>
+                    <h4>Exprimez votre besoin</h4>
+                    <p>Par téléphone, WhatsApp ou notre formulaire en quelques secondes.</p>
                 </div>
-                <div class="prestation-details-box">
-                    <ul class="features-list">
-                        <li>Courses alimentaires</li>
-                        <li>Pressing</li>
-                        <li>Achat de fleurs</li>
-                        <li>Rangement des courses</li>
-                        <li>Pharmacie</li>
-                        <li>Dépôt et retrait de colis</li>
-                        <li>Achat de gâteau</li>
-                        <li>Préparation de la maison avant retour</li>
-                    </ul>
+                <div class="step-item">
+                    <div class="step-number">02</div>
+                    <h4>Nous validons les détails</h4>
+                    <p>Adresse, créneau horaire, aménagement et détails spécifiques.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">03</div>
+                    <h4>Prise en charge & Réalisation</h4>
+                    <p>Avec discrétion, ponctualité et professionnalisme à l'heure convenue.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">04</div>
+                    <h4>Profitez du résultat</h4>
+                    <p>Maison propre, courses faites, l'esprit libre de toute charge mentale.</p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="prestation-section">
-            <div class="prestation-row reverse">
-                <div class="prestation-info">
-                    <div class="icon-circle"><i class="fa-solid fa-house-circle-check"></i></div>
-                    <h3>Maison Prête</h3>
-                    <p class="prestation-description">Préparation avant réception ou retour de voyage.</p>
-                    <a href="Demande-prestation.html?service=conciergerie" class="btn-blue">Demander cette prestation</a>
+    <section class="testimonials-section">
+        <div class="container">
+            <span class="section-tag">Témoignages</span>
+            <h2 class="section-title">Ce que disent nos clients</h2>
+            <p class="section-subtitle">Découvrez les avis de ceux qui nous font confiance chaque semaine.</p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Un service exceptionnel ! Maison Impeccable est parfait. Le personnel
+                        est discret, ponctuel et d'une efficacité rare. Je recommande à 100%."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">ML</div>
+                        <div class="client-details">
+                            <h5>Marie L.</h5>
+                            <p>Paris (75)</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="prestation-details-box">
-                    <ul class="features-list">
-                        <li>Logement aéré</li>
-                        <li>Frigo rempli</li>
-                        <li>Fleurs disposées</li>
-                        <li>Ambiance accueillante</li>
-                        <li>Courses faites</li>
-                        <li>Linge prêt</li>
-                        <li>Maison rangée</li>
-                    </ul>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Le 'Matin Privilège' a transformé mon dimanche matin. Quel bonheur de
+                        recevoir un petit déjeuner si complet et frais sans sortir de chez soi."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">AG</div>
+                        <div class="client-details">
+                            <h5>Alexandre G.</h5>
+                            <p>Neuilly-sur-Seine</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Je n'ai plus du tout le temps de faire les courses. Oyéo s'occupe de
+                        tout, mon frigo est plein à mon retour de déplacement. Merci beaucoup."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">SD</div>
+                        <div class="client-details">
+                            <h5>Sophie D.</h5>
+                            <p>Boulogne-Billancourt</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="prestation-section" style="padding-bottom: 120px;">
-            <div class="prestation-row">
-                <div class="prestation-info">
-                    <div class="icon-circle"><i class="fa-solid fa-wine-glass"></i></div>
-                    <h3>Après Réception</h3>
-                    <p class="prestation-description">Remise en ordre après dîner, fête ou événement privé.</p>
-                    <a href="Demande-prestation.html?service=autre" class="btn-blue">Demander cette prestation</a>
+    <section class="zones-section">
+        <div class="container">
+            <span class="section-tag">Zones d'Intervention</span>
+            <h2>Paris & Île-de-France</h2>
+            <p class="zones-subtitle">Oyéo services intervient principalement à Paris Ouest et dans les communes premium
+                d'Île-de-France.</p>
+
+            <div class="zones-grid">
+                <!-- Première ligne : 10 villes -->
+                <div class="zones-row">
+                    <div class="zone-card">Boissy-Saint-Léger</div>
+                    <div class="zone-card">Paris 16e</div>
+                    <div class="zone-card">Neuilly-sur-Seine</div>
+                    <div class="zone-card">Boulogne-Billancourt</div>
+                    <div class="zone-card">Saint-Cloud</div>
+                    <div class="zone-card">Vincennes</div>
+                    <div class="zone-card">Le Vésinet</div>
+                    <div class="zone-card">Saint-Germain-en-Laye</div>
+                    <div class="zone-card">Versailles</div>
+                    <div class="zone-card">Levallois-Perret</div>
                 </div>
-                <div class="prestation-details-box">
-                    <ul class="features-list">
-                        <li>Vaisselle</li>
-                        <li>Nettoyage cuisine</li>
-                        <li>Sanitaires</li>
-                        <li>Poubelles</li>
-                        <li>Sols</li>
-                        <li>Rangement général</li>
-                    </ul>
+
+                <!-- Deuxième ligne : 7 villes -->
+                <div class="zones-row" style="width: 85%; margin: 0 auto;">
+                    <div class="zone-card">Paris</div>
+                    <div class="zone-card">Paris 7e</div>
+                    <div class="zone-card">Paris 8e</div>
+                    <div class="zone-card">Paris 15e</div>
+                    <div class="zone-card">Paris 17e</div>
+                    <div class="zone-card">Paris 19e</div>
+                    <div class="zone-card">Yvelines</div>
                 </div>
             </div>
+
+            <div>
+                <a href="#" class="btn-zones">Voir toutes les zones</a>
+            </div>
         </div>
+    </section>
 
-    </div>
-    </div>
-
+    <section class="cta-section">
+        <div class="container">
+            <h2>Prêt à déléguer votre quotidien ?</h2>
+            <p>Demandez votre proposition personnalisée et rejoignez l'élite de ceux qui profitent de leur temps.</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="Demande-prestation.html" class="btn btn-gold">Demander une prestation </a>
+                <a href="#" class="btn btn-outline btn-download"><i class="fa-solid fa-file-arrow-down"></i> Télécharger
+                    la brochure</a>
+            </div>
+        </div>
+    </section>
 
             <footer class="site-footer">
         <div class="container">
@@ -1518,24 +1610,6 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Effet d'apparition au défilement pour les prestations
-            const observerRows = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = "1";
-                        entry.target.style.transform = "translateY(0)";
-                    }
-                });
-            }, { root: null, threshold: 0.15 });
-
-            const rows = document.querySelectorAll('.prestation-row');
-            rows.forEach(row => {
-                row.style.opacity = "0";
-                row.style.transform = "translateY(30px)";
-                row.style.transition = "all 0.6s ease-out";
-                observerRows.observe(row);
-            });
-
             // Effet d'apparition douce des éléments lors du défilement
             const observerOptions = { root: null, threshold: 0.1 };
             const observer = new IntersectionObserver((entries) => {

@@ -2,11 +2,13 @@ from django.db import models
 
 class ContactMessage(models.Model):
     SERVICE_CHOICES = [
-        ('menage', 'Ménage / Repassage'),
-        ('seniors', 'Accompagnement / Aide aux seniors'),
-        ('enfants', 'Garde d\'enfants'),
-        ('jardinage', 'Jardinage / Bricolage'),
-        ('autre', 'Autre besoin'),
+        ('maison', 'Maison / Impeccable'),
+        ('privilège', 'Matin / Privilège'),
+        ('Courses', 'Courses & Quotidien'),
+        ('prête', 'maison / prête'),
+        ('reception','Autre /  besoin'),
+        ('voyage','Retour / Voyage'),
+        ('demande','Autre / demande / personnalisée')
     ]
 
     first_name = models.CharField(max_length=100, verbose_name="Prénom")
